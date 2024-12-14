@@ -1,0 +1,53 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 40px;
+
+  @include md() {
+    padding: 20px;
+  }
+}
+
+.containerCarouselClients {
+  @include container(fluid);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 140px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  width: 160px;
+  // height: 120px;
+  border-radius: 50%;
+  background-color: $bg-secondary;
+  margin-right: 30px;
+
+  position: relative;
+  height: auto;
+  aspect-ratio: 1;
+
+  span {
+    color: $text-body;
+    font-family: var(--font-manual-expanded), sans-serif;
+    text-align: center;
+  }
+}
+
+.dividerSpace {
+  margin: 10px 0;
+}

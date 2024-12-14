@@ -1,0 +1,19 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+}
+
+.content {
+  background-color: $branding;
+  width: 100%;
+  height: 20px;
+  margin-top: 10px;
+  background: linear-gradient(to right, #dfa30e, #e5be5b, $branding);
+}

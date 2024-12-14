@@ -1,0 +1,67 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.anchorButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 12px 26px;
+  transition: all 0.2s ease-in-out;
+  background-color: $branding;
+  color: $text-contrast;
+  border-radius: $border-xl;
+  border: 2px solid transparent;
+  font-family: var(--font-manual-expanded), sans-serif;
+
+  &:hover {
+    border: 2px solid $branding;
+    background-color: $bg-primary;
+    color: $branding;
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    margin-left: 10px;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: $bg-secondary;
+  color: $text-body;
+  border: 2px solid $bg-secondary;
+
+  svg {
+    color: $text-body; /* Aplica cor ao ícone */
+  }
+}
+
+.anchorButtonContrast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 12px 26px;
+  transition: all 0.2s ease-in-out;
+  background-color: $bg-primary;
+  color: $branding;
+  border-radius: $border-xl;
+  border: 2px solid transparent;
+  font-family: var(--font-manual-expanded), sans-serif;
+
+  &:hover {
+    border: 2px solid $bg-primary;
+    background-color: $branding;
+    color: $text-contrast;
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    margin-left: 10px;
+  }
+}

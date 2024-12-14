@@ -1,0 +1,89 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  padding: 0 0 60px 0;
+  // min-height: calc(100vh - 130px);
+
+  @include md() {
+    padding: 20px;
+  }
+}
+
+.content {
+  @include container;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: $bg-secondary;
+  border-radius: $border-default;
+  padding: 40px 30px;
+  // height: 100%;
+  // overflow-y: auto;
+
+  .bold {
+    font-family: var(--font-lato-bold), sans-serif;
+    color: $text-title;
+  }
+
+  p {
+    color: $text-body;
+    margin: 20px 0;
+  }
+
+  ul {
+    margin-left: 30px;
+
+    li::marker {
+      color: $text-body;
+    }
+  }
+
+  h3 {
+    color: $branding;
+    font-family: var(--font-lato-bold), sans-serif;
+    margin-bottom: 30px;
+  }
+}
+
+.containerButton {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.buttonBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 12px 26px;
+  transition: all 0.2s ease-in-out;
+  background-color: $branding;
+  color: $text-contrast;
+  border-radius: $border-xl;
+  border: 2px solid transparent;
+  font-family: var(--font-manual-expanded), sans-serif;
+
+  &:hover {
+    border: 2px solid $branding;
+    background-color: $bg-primary;
+    color: $branding;
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    margin-left: 10px;
+  }
+}

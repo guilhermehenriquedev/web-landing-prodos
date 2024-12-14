@@ -1,0 +1,76 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-lato-regular), sans-serif;
+  scroll-behavior: smooth;
+  // overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  background-color: $bg-primary;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-tertiary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $branding;
+}
+
+::selection {
+  background: $branding;
+  color: $text-contrast;
+}
+
+a {
+  @include responsive-font(0.875rem, 0.875rem, 0.875rem, 1rem, 1rem);
+}
+
+h1 {
+  @include responsive-font(2rem, 2rem, 2.5rem, 3.75rem, 4.75rem);
+}
+
+h2 {
+  @include responsive-font(1.5rem, 1.5rem, 1.7rem, 2rem, 2.5rem);
+}
+
+h3 {
+  @include responsive-font(1rem, 1rem, 1rem, 1.125rem, 1.4rem);
+}
+
+h4 {
+  @include responsive-font(1rem, 1rem, 1.25remx, 1.25remx, 1.25remx);
+}
+
+label {
+  @include responsive-font(1rem, 1rem, 1rem, 1.125rem, 1.4rem);
+}
+
+span {
+  @include responsive-font(0.875rem, 0.875rem, 1rem, 1rem, 1rem);
+}
+
+p {
+  @include responsive-font(1rem, 1rem, 1rem, 1.25rem, 1.25rem);
+}

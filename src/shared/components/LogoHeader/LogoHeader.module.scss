@@ -1,0 +1,23 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.brandName {
+  margin-left: 10px;
+  font-family: var(--font-manual-expanded), sans-serif;
+  color: $branding;
+
+  @include md() {
+    display: none;
+  }
+
+  @include sm() {
+    display: block;
+  }
+}

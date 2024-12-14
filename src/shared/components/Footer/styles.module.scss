@@ -1,0 +1,216 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.footerContainer {
+  @include container(fluid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  flex-direction: column;
+  background-color: $bg-secondary;
+
+  .divider {
+    width: 100%;
+    border-top: 1px solid $bg-tertiary;
+  }
+}
+
+.containerNavs {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+
+  @include md() {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .imgWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    @include md() {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prodos {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      margin-left: 10px;
+      max-width: 450px;
+      min-width: 300px;
+      width: 100%;
+
+      h4 {
+        color: $branding;
+        font-family: var(--font-manual-expanded), sans-serif;
+        text-align: left;
+        width: 100%;
+      }
+
+      a,
+      span {
+        color: $text-body;
+        text-align: left;
+        margin-bottom: 10px;
+      }
+
+      .link {
+        width: 100%;
+
+        &:hover {
+          color: $branding;
+        }
+      }
+
+      @include md() {
+        margin-left: 0;
+
+        h4 {
+          text-align: center;
+        }
+        a {
+          text-align: center;
+        }
+
+        span {
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      .socialIcons {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 10px;
+
+        svg {
+          width: 26px;
+          height: 26px;
+          color: $text-body;
+          margin-right: 10px;
+          transition: all 0.1s ease-in-out;
+
+          &:hover {
+            cursor: pointer;
+            color: $branding;
+          }
+        }
+
+        @include md() {
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  .navWrapper {
+    width: 100%;
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      width: 100%;
+
+      @include md() {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .nav {
+        h4 {
+          color: $branding;
+          margin-bottom: 10px;
+
+          @include md() {
+            text-align: center;
+          }
+        }
+
+        .navList {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          @include md() {
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .navItem {
+          padding: 3px 0;
+          text-align: left;
+          color: $text-body;
+
+          &:hover {
+            cursor: pointer;
+            color: $branding;
+          }
+        }
+      }
+    }
+  }
+}
+
+.containerCopyright {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 20px 0;
+
+  span {
+    color: $text-title;
+    strong {
+      color: $branding;
+    }
+  }
+
+  .upButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-default;
+    cursor: pointer;
+    background-color: $bg-tertiary;
+    border: none;
+
+    &:hover {
+      border: 2px solid $branding;
+    }
+
+    svg {
+      color: $branding;
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  @include md() {
+    // flex-direction: column;
+    // align-items: flex-start;
+    // justify-content: flex-start;
+    padding: 20px;
+  }
+}
