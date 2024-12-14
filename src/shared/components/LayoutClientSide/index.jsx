@@ -21,7 +21,7 @@ export default function LayoutClientSide({ children }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 150) {
+      if (window.scrollY > 45) {
         setHasScrolled(true);
       } else {
         setHasScrolled(false);
