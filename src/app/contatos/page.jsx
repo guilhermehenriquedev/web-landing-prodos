@@ -17,9 +17,6 @@ import { IoMdRadioButtonOn } from "react-icons/io";
 import { IoIosSend } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
-// import { FaFacebookSquare } from "react-icons/fa";
-// import { FaSquareXTwitter } from "react-icons/fa6";
-// import { FaYoutube } from "react-icons/fa";
 
 export default function Contatos() {
   const [name, setName] = useState("");
@@ -199,7 +196,13 @@ um orçamento sem compromisso"
                 >
                   <FaInstagram />
                 </a>
-                <FaLinkedin />
+                <a
+                  href="https://www.linkedin.com/company/prodosdigital/posts/?feedView=all&viewAsMember=true"
+                  target="_blank"
+                  className={styles.link}
+                >
+                  <FaLinkedin />
+                </a>
                 {/* <FaFacebookSquare />
                 <FaSquareXTwitter />
                 <FaYoutube /> */}

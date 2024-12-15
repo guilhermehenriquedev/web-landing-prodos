@@ -77,7 +77,13 @@ export default function LayoutClientSide({ children }) {
               >
                 <FaInstagram />
               </a>
-              <FaLinkedin />
+
+              <a
+                href="https://www.linkedin.com/company/prodosdigital/posts/?feedView=all&viewAsMember=true"
+                target="_blank"
+              >
+                <FaLinkedin />
+              </a>
             </MotionController>
 
             <MotionController className={styles.contacts}>
