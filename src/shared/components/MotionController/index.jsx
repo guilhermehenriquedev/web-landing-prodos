@@ -34,7 +34,7 @@ export default function MotionController({
       className={className}
       initial={initialValues[direction]}
       animate={isInView ? animateValues[direction] : initialValues[direction]}
-      transition={{ duration: 0.6, delay: index * 0.2 + delay }}
+      transition={{ duration: 0.5, delay: index * 0.2 + delay }}
       {...props}
     >
       {children}

@@ -32,6 +32,7 @@ export default function CallToAction() {
             label="Entre em contato"
             contrastButton
             icon={<FiExternalLink />}
+            pathUrl="https://wa.me/5586994665680"
           />
         </div>
 
