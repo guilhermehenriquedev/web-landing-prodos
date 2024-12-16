@@ -59,6 +59,12 @@
       background-color: $bg-secondary;
       margin-bottom: 14px;
       overflow: hidden;
+      height: auto;
+      border: 2px solid transparent;
+
+      &:hover {
+        border: 2px solid $branding;
+      }
     }
 
     .answer {
@@ -80,11 +86,8 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      border: 2px solid transparent;
 
-      &:hover {
-        border: 2px solid $branding;
-      }
+      overflow: hidden;
     }
 
     .question .boxIcon {
@@ -103,7 +106,7 @@
     }
 
     .closeParagraph {
-      color: $text-title;
+      color: $text-body;
     }
 
     .openTitle {

@@ -32,7 +32,7 @@ export default function OurClients() {
             <div className={styles.card} key={index}>
               <Image
                 src={`/img/partners/${logo}`}
-                alt="Logo do parceiro"
+                alt={`Parceiro: ${logo}`}
                 fill
                 quality={100}
                 style={{ objectFit: "contain" }}

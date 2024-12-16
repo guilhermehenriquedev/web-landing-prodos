@@ -46,15 +46,6 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => (
   </MotionController>
 );
 
-const PERGUNTAS = [
-  { id: 1, pergunta: "title", resposta: "pergunta" },
-  { id: 2, pergunta: "title", resposta: "pergunta" },
-  { id: 3, pergunta: "title", resposta: "pergunta" },
-  { id: 4, pergunta: "title", resposta: "pergunta" },
-  { id: 5, pergunta: "title", resposta: "pergunta" },
-  { id: 6, pergunta: "title", resposta: "pergunta" },
-];
-
 const Accordion = () => {
   const [openIndex, setOpenIndex] = useState(null);
 

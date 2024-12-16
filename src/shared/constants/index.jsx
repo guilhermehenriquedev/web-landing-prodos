@@ -2,10 +2,10 @@ export const LOGO_PARTNERS = [
   "acai_no_ponto.jpg",
   "cedula_promorota.jpg",
   "instituto_magister_de_ensino.jpg",
-  "ministerio_da_gestao_e_inovação.jpg",
+  "ministerio_da_gestao_e_inovacao.jpg",
   "prefeitura_de_teresina.jpg",
   "prefeitura_sebastiao_leal.jpg",
-  "secretaria_de_administração_teresina.jpg",
+  "secretaria_de_administracao_teresina.jpg",
   "sem_fronteiras_tv.jpg",
   "themos_vagas.jpg",
 ];
