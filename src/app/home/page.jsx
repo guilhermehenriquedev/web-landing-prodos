@@ -25,7 +25,7 @@ export default function Home() {
       <MotionController className={styles.content}>
         <h1 className={styles.textBrand}>PRÓDOS DIGITAL</h1>
         <h2 className={styles.text}>
-          Desenvolvimento de software e Marketing Digital
+          Fábrica de software e Agência de Marketing Digital
         </h2>
         <h4>
           Oferecemos soluções personalizadas para aumentar sua presença online,

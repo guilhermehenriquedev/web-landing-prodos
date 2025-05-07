@@ -24,9 +24,9 @@ export default function Index() {
       {/* <DividerSection /> */}
       <AboutUs />
       <CallToAction />
-      <OurClients />
+      {/* <OurClients /> */}
       {/* <Portfolio /> */}
-      <DividerSectionWithBackground />
+      {/*<DividerSectionWithBackground />*/}
       <Contacs />
       {/* <Testimonials /> */}
       <FaqQuestions />

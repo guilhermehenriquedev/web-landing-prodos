@@ -15,7 +15,7 @@ export default function CallToAction() {
     <section className={styles.section}>
       <MotionController delay={0.4} className={styles.content}>
         <div className={styles.cta}>
-          <h3>Transforme ideias em resultados reais! 🚀</h3>
+          <h3>Transforme ideias em resultados reais!</h3>
           <p>
             Desenvolvemos soluções personalizadas para o seu negócio, unindo
             estratégias de marketing digital e tecnologia de ponta. Seja para

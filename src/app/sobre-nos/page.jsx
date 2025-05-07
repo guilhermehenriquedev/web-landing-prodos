@@ -23,30 +23,7 @@ export default function AboutUs() {
 
       <div className={styles.content}>
         <MotionController className={styles.containerHistory}>
-          <p>
-            Na Pródos Digital, acreditamos que a transformação começa com ideias
-            ousadas e soluções inovadoras. Somos uma empresa comprometida em
-            conectar pessoas, processos e tecnologia para criar experiências
-            únicas e impactar positivamente os negócios de nossos clientes.
-          </p>
-          <p>
-            Com uma equipe apaixonada e movida por desafios, unimos criatividade
-            e expertise técnica para entregar resultados que fazem a diferença.
-            Nossa essência está em buscar excelência em cada detalhe,
-            construindo relacionamentos de confiança e parcerias de longo prazo.
-          </p>
-          <p>
-            Estamos sempre em evolução, acompanhando tendências e explorando
-            novas possibilidades para antecipar as necessidades do mercado. Para
-            nós, cada projeto é uma oportunidade de ir além, superando
-            expectativas e impulsionando histórias de sucesso.
-          </p>
-
-          <p>
-            Mais do que uma empresa, somos uma equipe que sonha grande e
-            trabalha com propósito. Convidamos você a fazer parte dessa jornada
-            conosco! 🚀
-          </p>
+        <p> Na Pródos Digital, unimos a robustez de uma fábrica de software à visão estratégica de uma agência digital para liderar a transformação digital em órgãos públicos e impulsionar a automação de processos em empresas privadas. Desenvolvemos soluções tecnológicas sob medida que conectam pessoas, dados e eficiência. </p> <p> Com uma equipe especializada e movida por propósito, criamos sistemas inteligentes, escaláveis e seguros — desde plataformas governamentais até fluxos automatizados que otimizam rotinas corporativas. Cada projeto é construído com foco em resultado, inovação e impacto real. </p> <p> Estamos atentos às necessidades do setor público e aos desafios do mercado privado, atuando com agilidade, transparência e visão de futuro. Se o seu desafio envolve tecnologia, transformação e eficiência, conte com a Pródos Digital para ir além. </p>
         </MotionController>
 
         <MotionController className={styles.containerImage}>
