@@ -180,14 +180,17 @@
 
   span {
     color: $text-title;
+    font-size: 0.875rem;
     strong {
       color: $branding;
     }
   }
 
   .upButton {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,6 +198,7 @@
     cursor: pointer;
     background-color: $bg-tertiary;
     border: none;
+    flex-shrink: 0;
 
     &:hover {
       border: 2px solid $branding;
@@ -208,9 +212,21 @@
   }
 
   @include md() {
-    // flex-direction: column;
-    // align-items: flex-start;
-    // justify-content: flex-start;
-    padding: 20px;
+    padding: 20px 16px;
+  }
+
+  @include xs() {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 12px;
+    text-align: center;
+
+    span {
+      order: 2;
+    }
+
+    .upButton {
+      order: 1;
+    }
   }
 }

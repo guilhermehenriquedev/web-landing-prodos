@@ -1,0 +1,121 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_media.scss";
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  padding: 60px 0;
+
+  @include md() {
+    padding: 32px 20px;
+  }
+
+  @include sm() {
+    padding: 24px 16px;
+  }
+
+  @include xs() {
+    padding: 20px 12px;
+  }
+}
+
+.grid {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+
+  @include md() {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include sm() {
+    grid-template-columns: 1fr;
+  }
+
+  @include xs() {
+    padding: 0 12px;
+    gap: 20px;
+  }
+}
+
+.card {
+  border-radius: $border-default;
+  overflow: hidden;
+  background: linear-gradient(145deg, $bg-secondary, $bg-primary);
+  border: 1px solid $bg-tertiary;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+.cardLink,
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.95;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background-color: $bg-tertiary;
+}
+
+.cardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: $text-title;
+  font-family: var(--font-manual-expanded), sans-serif;
+}
+
+.cardDescription {
+  color: $text-body;
+  flex: 1;
+  margin-bottom: 16px;
+  font-size: 0.9375rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: $branding;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  margin-top: auto;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}

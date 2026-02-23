@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "@/shared/components/LayoutClientSide/Layout.module.scss";
 
 //Components
@@ -14,21 +14,36 @@ import { IoMdMail } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 
+const SCROLL_TOP_THRESHOLD = 80;
+const SCROLL_HIDE_THRESHOLD = 10;
+
 export default function LayoutClientSide({ children }) {
   const [section, setSection] = useState("home-section");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 45) {
-        setHasScrolled(true);
+      const scrollY = window.scrollY;
+
+      if (scrollY <= SCROLL_TOP_THRESHOLD) {
+        setIsHeaderVisible(true);
+        setHasScrolled(scrollY > 45);
       } else {
-        setHasScrolled(false);
+        const delta = scrollY - lastScrollY.current;
+        if (delta > SCROLL_HIDE_THRESHOLD) {
+          setIsHeaderVisible(false);
+        } else if (delta < -SCROLL_HIDE_THRESHOLD) {
+          setIsHeaderVisible(true);
+        }
+        setHasScrolled(true);
       }
+      lastScrollY.current = scrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -63,7 +78,11 @@ export default function LayoutClientSide({ children }) {
         ></div>
       )}
 
-      <div className={styles.headerContainer}>
+      <div
+        className={`${styles.headerContainer} ${
+          !isHeaderVisible ? styles.headerHidden : ""
+        }`}
+      >
         <div
           className={`${styles.headerContacts} ${
             hasScrolled ? styles.hidden : ""
@@ -139,6 +158,20 @@ export default function LayoutClientSide({ children }) {
                   </MotionController>
                 </li>
                 <li className={styles.navItem}>
+                  <MotionController delay={0.25}>
+                    <a
+                      href="#solutions-page"
+                      className={`${styles.navLink} ${
+                        section === "solutions-section" ? styles.active : ""
+                      }`}
+                      id="solutions-section"
+                      onClick={(e) => setSectionNavbar(e.target.id)}
+                    >
+                      SOLUÇÕES
+                    </a>
+                  </MotionController>
+                </li>
+                <li className={styles.navItem}>
                   <MotionController delay={0.3}>
                     <a
                       href="#about-page"
@@ -163,6 +196,20 @@ export default function LayoutClientSide({ children }) {
                       onClick={(e) => setSectionNavbar(e.target.id)}
                     >
                       CLIENTES
+                    </a>
+                  </MotionController>
+                </li>
+                <li className={styles.navItem}>
+                  <MotionController delay={0.45}>
+                    <a
+                      href="#testimonials-page"
+                      className={`${styles.navLink} ${
+                        section === "testimonials-section" ? styles.active : ""
+                      }`}
+                      id="testimonials-section"
+                      onClick={(e) => setSectionNavbar(e.target.id)}
+                    >
+                      AVALIAÇÕES
                     </a>
                   </MotionController>
                 </li>
@@ -230,6 +277,19 @@ export default function LayoutClientSide({ children }) {
               </li>
               <li className={styles.navItem}>
                 <a
+                  href="#solutions-page"
+                  className={styles.navLink}
+                  id="solutions-section"
+                  onClick={(e) => {
+                    setSectionNavbar(e.target.id);
+                    toggleMenu();
+                  }}
+                >
+                  SOLUÇÕES
+                </a>
+              </li>
+              <li className={styles.navItem}>
+                <a
                   href="#about-page"
                   className={styles.navLink}
                   id="about-section"
@@ -252,6 +312,19 @@ export default function LayoutClientSide({ children }) {
                   }}
                 >
                   CLIENTES
+                </a>
+              </li>
+              <li className={styles.navItem}>
+                <a
+                  href="#testimonials-page"
+                  className={styles.navLink}
+                  id="testimonials-section"
+                  onClick={(e) => {
+                    setSectionNavbar(e.target.id);
+                    toggleMenu();
+                  }}
+                >
+                  AVALIAÇÕES
                 </a>
               </li>
 

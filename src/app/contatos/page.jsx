@@ -12,8 +12,6 @@ import { IoIosMail } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 import { HiMiniDevicePhoneMobile } from "react-icons/hi2";
-import { IoMdRadioButtonOff } from "react-icons/io";
-import { IoMdRadioButtonOn } from "react-icons/io";
 import { IoIosSend } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
@@ -24,9 +22,13 @@ export default function Contatos() {
   const [message, setMessage] = useState("");
   const [service, setService] = useState("");
 
-  function handleSetService(target) {
-    setService(target);
-  }
+  const serviceLabels = {
+    sistema: "Sistema sob medida",
+    automacao: "Automação",
+    ia: "Solução com IA",
+    integracao: "Integração entre sistemas",
+    outro: "Outro",
+  };
 
   const disabled = !name || !email || !message || !service;
 
@@ -80,55 +82,23 @@ um orçamento sem compromisso"
             />
           </div>
 
-          <div style={{ marginTop: "10px" }} />
-
-          <label className={styles.label}>
-            Que tipo de serviço você tem interesse?
-          </label>
-          <div className={styles.serviceChosen}>
-            <div
-              id="development"
-              className={`${styles.option} ${
-                service === "development" ? styles.optionSelected : ""
-              } `}
-              onClick={(e) => {
-                if (e.currentTarget.id === service) {
-                  handleSetService("");
-                } else {
-                  handleSetService(e.currentTarget.id);
-                }
-              }}
+          <div className={styles.inputWrapper}>
+            <label htmlFor="service" className={styles.label}>
+              Que tipo de serviço você tem interesse?
+            </label>
+            <select
+              id="service"
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+              className={styles.select}
             >
-              {service === "development" ? (
-                <IoMdRadioButtonOn />
-              ) : (
-                <IoMdRadioButtonOff />
-              )}
-
-              <h4>Desenvolvimento de sistemas</h4>
-            </div>
-
-            <div
-              id="marketing"
-              className={`${styles.option} ${
-                service === "marketing" ? styles.optionSelected : ""
-              } `}
-              onClick={(e) => {
-                if (e.currentTarget.id === service) {
-                  handleSetService("");
-                } else {
-                  handleSetService(e.currentTarget.id);
-                }
-              }}
-            >
-              {service === "marketing" ? (
-                <IoMdRadioButtonOn />
-              ) : (
-                <IoMdRadioButtonOff />
-              )}
-
-              <h4>Marketing digital</h4>
-            </div>
+              <option value="">Selecione o tipo de serviço</option>
+              <option value="sistema">Sistema sob medida</option>
+              <option value="automacao">Automação</option>
+              <option value="ia">Solução com IA</option>
+              <option value="integracao">Integração entre sistemas</option>
+              <option value="outro">Outro</option>
+            </select>
           </div>
 
           <div style={{ marginTop: "20px" }} />
@@ -136,11 +106,7 @@ um orçamento sem compromisso"
             label="Enviar mensagem"
             icon={<IoIosSend />}
             pathUrl={`https://wa.me/5586994665680?text=${encodeURIComponent(
-              `Olá, PRÓDOS DIGITAL! tudo bem?\n\nMeu nome é: ${name}\nMeu e-mail é: ${email}\nTive interesse sobre o tipo de serviço: ${
-                service === "development"
-                  ? "Desenvolvimento"
-                  : "Marketing digital"
-              }\n\nMensagem: ${message}`
+              `Olá, PRÓDOS DIGITAL! Tudo bem?\n\nMeu nome é: ${name}\nMeu e-mail é: ${email}\nInteresse: ${serviceLabels[service] || service}\n\nMensagem: ${message}`
             )}`}
             disabled={disabled}
           />

@@ -44,9 +44,6 @@ export default function Footer() {
 
                 <div className={styles.prodos}>
                   <h4>PRÓDOS DIGITAL</h4>
-                  <span>
-                    <strong>CNPJ: 58.240.969.0001/10</strong>
-                  </span>
                   <span>agencia.prodosdigital@gmail.com</span>
                   <a
                     href="https://maps.app.goo.gl/kSBdUyAjh8a7LPwW9"
@@ -92,17 +89,17 @@ export default function Footer() {
                 <Link href="#services-page">
                   <li className={styles.navItem}>Serviços</li>
                 </Link>
+                <Link href="#solutions-page">
+                  <li className={styles.navItem}>Soluções</li>
+                </Link>
                 <Link href="#about-page">
                   <li className={styles.navItem}>Quem somos</li>
                 </Link>
-                <Link href="#clients-page">
-                  <li className={styles.navItem}>Clientes</li>
+                <Link href="#testimonials-page">
+                  <li className={styles.navItem}>Avaliações</li>
                 </Link>
                 <Link href="#contacts-page">
                   <li className={styles.navItem}>Contatos</li>
-                </Link>
-                <Link href="#home-page">
-                  <li className={styles.navItem}>Home</li>
                 </Link>
                 {/* <Link href="#portfolio-page">
                   <li className={styles.navItem}>Portfólio</li>

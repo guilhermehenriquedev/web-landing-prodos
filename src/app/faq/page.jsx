@@ -82,7 +82,7 @@ export default function FaqQuestions() {
     <section id="faq-page" className={styles.section}>
       <TitleSection
         title="PERGUNTAS FREQUENTES (FAQ)"
-        subtitle="Tire suas dúvidas sobre os serviços prestados"
+        subtitle="Tire suas dúvidas sobre sistemas, automações e soluções com IA"
       />
       <div className={styles.content}>
         <div className={styles.faq}>

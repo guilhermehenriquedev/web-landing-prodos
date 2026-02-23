@@ -10,7 +10,11 @@
   padding: 60px 0;
 
   @include md() {
-    padding: 20px;
+    padding: 24px 20px;
+  }
+
+  @include xs() {
+    padding: 20px 12px;
   }
 }
 
@@ -34,10 +38,22 @@
   flex-direction: column;
   padding: 20px;
   width: 500px;
+  min-width: 280px;
   min-height: 300px;
   border-radius: $border-default;
   background-color: $bg-secondary;
   margin-right: 20px;
+
+  @include sm() {
+    width: 320px;
+    min-width: 280px;
+  }
+
+  @include xs() {
+    width: 280px;
+    min-width: 260px;
+    padding: 16px;
+  }
 
   border: 1px solid $bg-secondary;
   background: linear-gradient(120deg, $bg-primary, $bg-secondary);
@@ -73,6 +89,16 @@
         aspect-ratio: 1;
         border-radius: 50%;
         overflow: hidden;
+        background-color: $bg-tertiary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .initials {
+        font-family: var(--font-lato-bold), sans-serif;
+        font-size: 1.25rem;
+        color: $branding;
       }
 
       .user {
@@ -89,15 +115,26 @@
     }
 
     .stats {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+
       svg {
         width: 20px;
         height: 20px;
-        color: $branding;
-        margin-right: 5px;
+        margin-right: 2px;
 
         &:last-child {
           margin-right: 0;
         }
+      }
+
+      .starFilled {
+        color: $branding;
+      }
+
+      .starEmpty {
+        color: $bg-tertiary;
       }
     }
   }

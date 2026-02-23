@@ -3,6 +3,7 @@
 //Pages
 import Home from "./home/page";
 import Services from "./servicos/page";
+import Solucoes from "./solucoes/page";
 import OurClients from "./nossos-clientes/page";
 import CallToAction from "./call-to-action/page";
 import FaqQuestions from "./faq/page";
@@ -21,14 +22,11 @@ export default function Index() {
     <>
       <Home />
       <Services />
-      {/* <DividerSection /> */}
+      <Solucoes />
       <AboutUs />
       <CallToAction />
-      {/* <OurClients /> */}
-      {/* <Portfolio /> */}
-      {/*<DividerSectionWithBackground />*/}
+      <Testimonials />
       <Contacs />
-      {/* <Testimonials /> */}
       <FaqQuestions />
       <Footer />
     </>

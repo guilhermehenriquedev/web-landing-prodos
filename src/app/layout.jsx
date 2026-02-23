@@ -26,16 +26,23 @@ const latoRegular = localFont({
 });
 
 export const metadata = {
-  title: "PRÓDOS DIGITAL",
+  title: "PRÓDOS DIGITAL | Sistemas sob demanda e automações com IA",
   description:
-    "A PRÓDOS DIGITAL transforma negócios com soluções completas de software e estratégias inovadoras de marketing digital, conectando sua empresa ao sucesso.",
+    "Sistemas sob medida, automação de processos e soluções com Inteligência Artificial. Desenvolvimento de software, integrações e consultoria para sua empresa.",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${manualExpanded.variable} ${latoBold.variable} ${latoLight.variable} ${latoRegular.variable}`}
+        suppressHydrationWarning
       >
         <LayoutClientSide>{children}</LayoutClientSide>
       </body>

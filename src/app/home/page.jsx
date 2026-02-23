@@ -25,11 +25,11 @@ export default function Home() {
       <MotionController className={styles.content}>
         <h1 className={styles.textBrand}>PRÓDOS DIGITAL</h1>
         <h2 className={styles.text}>
-          Fábrica de software e Agência de Marketing Digital
+          Sistemas sob medida e automações com Inteligência Artificial
         </h2>
         <h4>
-          Oferecemos soluções personalizadas para aumentar sua presença online,
-          otimizar processos e alcançar resultados excepcionais
+          Desenvolvemos sistemas sob demanda, automações de processos e
+          soluções com IA para otimizar sua operação e escalar resultados
         </h4>
         <a href="#about-page">SAIBA MAIS</a>
 

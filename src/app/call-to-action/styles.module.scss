@@ -13,6 +13,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
+
+  @include sm() {
+    padding: 32px 16px;
+  }
+
+  @include xs() {
+    padding: 24px 12px;
+  }
 }
 
 .content {
@@ -29,6 +37,10 @@
   @include md() {
     padding: 40px 20px;
     border-radius: 0;
+  }
+
+  @include xs() {
+    padding: 24px 16px;
   }
 
   .cta {

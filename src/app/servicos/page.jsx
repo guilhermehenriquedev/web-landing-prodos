@@ -7,78 +7,54 @@ import MotionController from "@/shared/components/MotionController";
 
 //Icons
 import { MdDeveloperMode } from "react-icons/md";
-import { RiToolsFill } from "react-icons/ri";
-import { GrAnalytics } from "react-icons/gr";
 import { RiRobot2Fill } from "react-icons/ri";
-import { MdOutlinePhoneIphone } from "react-icons/md";
-import { TfiAnnouncement } from "react-icons/tfi";
-import { MdDesignServices } from "react-icons/md";
-import { PiFilmSlate } from "react-icons/pi";
-import { FaMicrophoneLines } from "react-icons/fa6";
+import { GrAnalytics } from "react-icons/gr";
+import { IoSparkles } from "react-icons/io5";
+import { TbApi } from "react-icons/tb";
+import { HiOutlineLightBulb } from "react-icons/hi2";
 
 const cards = [
   {
     id: 1,
     icon: <MdDeveloperMode />,
-    title: "Desenvolvimento de sistemas",
+    title: "Sistemas sob demanda",
     description:
-      "Construímos sistemas personalizados para atender às necessidades exclusivas do seu negócio, utilizando tecnologia de ponta e as melhores práticas do mercado",
+      "Desenvolvemos sistemas web e mobile sob medida: ERPs, CRMs, portais e dashboards que se adaptam às necessidades exclusivas do seu negócio.",
   },
   {
     id: 2,
-    icon: <RiToolsFill />,
-    title: "Manutenção de computadores",
-    description:
-      "Diagnóstico e reparo de computadores, garantindo que seus equipamentos funcionem com máxima eficiência",
-  },
-  {
-    id: 3,
-    icon: <GrAnalytics />,
-    title: "Análise de dados",
-    description:
-      "Transformamos dados brutos em informações valiosas para impulsionar decisões estratégicas e o crescimento do seu negócio",
-  },
-  {
-    id: 4,
     icon: <RiRobot2Fill />,
     title: "Automação de processos",
     description:
-      "Otimizamos tarefas repetitivas e manuais por meio de soluções automatizadas, reduzindo custos e aumentando a eficiência",
+      "Automatizamos tarefas repetitivas, integrações entre sistemas e workflows, reduzindo custos e aumentando a eficiência operacional.",
+  },
+  {
+    id: 3,
+    icon: <IoSparkles />,
+    title: "Soluções com Inteligência Artificial",
+    description:
+      "Chatbots, assistentes virtuais, análise e classificação de dados, extração de informações e decisões automatizadas com IA.",
+  },
+  {
+    id: 4,
+    icon: <TbApi />,
+    title: "Integração entre sistemas",
+    description:
+      "Conectamos seus sistemas, APIs e ferramentas para que dados e processos fluam de forma segura e automatizada.",
   },
   {
     id: 5,
-    icon: <TfiAnnouncement />,
-    title: "Tráfego pago",
+    icon: <GrAnalytics />,
+    title: "Análise de dados",
     description:
-      "Atraímos clientes qualificados para o seu negócio por meio de campanhas estratégicas em anúncios online",
+      "Transformamos dados em insights para decisões estratégicas, relatórios e indicadores que impulsionam o crescimento.",
   },
   {
     id: 6,
-    icon: <MdOutlinePhoneIphone />,
-    title: "Gestão de redes sociais",
+    icon: <HiOutlineLightBulb />,
+    title: "Consultoria e desenho de processos",
     description:
-      "Cuidamos da sua presença digital com conteúdos atrativos e estratégias que conectam sua marca ao público certo",
-  },
-  {
-    id: 7,
-    icon: <MdDesignServices />,
-    title: "Edição de Vídeos/Fotos",
-    description:
-      "Transformamos sua visão criativa em realidade com edições profissionais que destacam a essência do seu conteúdo",
-  },
-  {
-    id: 8,
-    icon: <PiFilmSlate />,
-    title: "Criação de conteúdo",
-    description:
-      "Desenvolvemos conteúdos criativos e relevantes que engajam o público e fortalecem a identidade da sua marca em diferentes canais digitais",
-  },
-  {
-    id: 9,
-    icon: <FaMicrophoneLines />,
-    title: "Assessoria de imprensa",
-    description:
-      "Gerenciamos a comunicação da sua empresa com a mídia, garantindo visibilidade positiva e alinhada aos seus objetivos estratégicos",
+      "Ajudamos a mapear processos, definir arquitetura de sistemas e escolher as melhores ferramentas para sua operação.",
   },
 ];
 
@@ -87,7 +63,7 @@ export default function Services() {
     <section id="services-page" className={styles.section}>
       <TitleSection
         title="NOSSOS SERVIÇOS"
-        subtitle="Nossas soluções são personalizadas para atender às suas necessidades"
+        subtitle="Sistemas, automações e inteligência artificial sob medida para o seu negócio"
       />
 
       <div className={styles.grid}>

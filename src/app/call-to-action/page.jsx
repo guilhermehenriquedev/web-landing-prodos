@@ -15,16 +15,16 @@ export default function CallToAction() {
     <section className={styles.section}>
       <MotionController delay={0.4} className={styles.content}>
         <div className={styles.cta}>
-          <h3>Transforme ideias em resultados reais!</h3>
+          <h3>Transforme processos em resultados reais!</h3>
           <p>
-            Desenvolvemos soluções personalizadas para o seu negócio, unindo
-            estratégias de marketing digital e tecnologia de ponta. Seja para
-            conquistar novos clientes, otimizar processos ou aumentar sua
-            presença online, estamos prontos para ajudar.
+            Desenvolvemos sistemas sob medida, automações e soluções com
+            Inteligência Artificial para o seu negócio. Seja para otimizar
+            operações, integrar sistemas ou automatizar decisões, estamos
+            prontos para ajudar.
           </p>
           <p>
-            Entre em contato agora e descubra como podemos impulsionar seu
-            sucesso!
+            Entre em contato e descubra como podemos impulsionar a eficiência
+            da sua empresa!
           </p>
 
           <div style={{ marginTop: "30px" }} />

@@ -17,13 +17,28 @@ export default function AboutUs() {
   return (
     <section id="about-page" className={styles.section}>
       <TitleSection
-        title="SOBRE NÓS"
-        subtitle="Saiba um pouco mais sobre a nossa história"
+        title="QUEM SOMOS"
+        subtitle="Especialistas em sistemas sob demanda e automações com IA"
       />
 
       <div className={styles.content}>
         <MotionController className={styles.containerHistory}>
-        <p> Na Pródos Digital, unimos a robustez de uma fábrica de software à visão estratégica de uma agência digital para liderar a transformação digital em órgãos públicos e impulsionar a automação de processos em empresas privadas. Desenvolvemos soluções tecnológicas sob medida que conectam pessoas, dados e eficiência. </p> <p> Com uma equipe especializada e movida por propósito, criamos sistemas inteligentes, escaláveis e seguros — desde plataformas governamentais até fluxos automatizados que otimizam rotinas corporativas. Cada projeto é construído com foco em resultado, inovação e impacto real. </p> <p> Estamos atentos às necessidades do setor público e aos desafios do mercado privado, atuando com agilidade, transparência e visão de futuro. Se o seu desafio envolve tecnologia, transformação e eficiência, conte com a Pródos Digital para ir além. </p>
+          <p>
+            A PRÓDOS DIGITAL é especializada em desenvolver sistemas sob medida e
+            automações com Inteligência Artificial. Atuamos na transformação
+            digital de órgãos públicos e na automação de processos em empresas
+            privadas, criando soluções que conectam pessoas, dados e eficiência.
+          </p>
+          <p>
+            Com equipe técnica especializada, entregamos sistemas escaláveis e
+            seguros — de plataformas web e integrações até fluxos automatizados
+            e soluções com IA. Cada projeto é feito sob demanda, com foco em
+            resultado e impacto real na operação do cliente.
+          </p>
+          <p>
+            Se o seu desafio envolve tecnologia, automação ou inteligência
+            artificial, conte com a PRÓDOS DIGITAL para ir além.
+          </p>
         </MotionController>
 
         <MotionController className={styles.containerImage}>
@@ -55,7 +70,7 @@ export default function AboutUs() {
           <h3>
             SOLUÇÕES
             <br />
-            CRIATIVAS
+            INOVADORAS
           </h3>
           {/* <span>
             Lorem Ipsum is simply dummy text of the printing and typesetting
