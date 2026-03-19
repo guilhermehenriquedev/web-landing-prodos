@@ -89,14 +89,8 @@ export default function Footer() {
                 <Link href="#services-page">
                   <li className={styles.navItem}>Serviços</li>
                 </Link>
-                <Link href="#solutions-page">
-                  <li className={styles.navItem}>Soluções</li>
-                </Link>
                 <Link href="#about-page">
                   <li className={styles.navItem}>Quem somos</li>
-                </Link>
-                <Link href="#testimonials-page">
-                  <li className={styles.navItem}>Avaliações</li>
                 </Link>
                 <Link href="#contacts-page">
                   <li className={styles.navItem}>Contatos</li>

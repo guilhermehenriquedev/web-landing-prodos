@@ -3,14 +3,12 @@
 //Pages
 import Home from "./home/page";
 import Services from "./servicos/page";
-import Solucoes from "./solucoes/page";
 import OurClients from "./nossos-clientes/page";
 import CallToAction from "./call-to-action/page";
 import FaqQuestions from "./faq/page";
 import Contacs from "./contatos/page";
 import AboutUs from "./sobre-nos/page";
 import Portfolio from "./portfolio/page";
-import Testimonials from "./testemunhos/page";
 
 //Components
 import Footer from "../shared/components/Footer";
@@ -22,10 +20,8 @@ export default function Index() {
     <>
       <Home />
       <Services />
-      <Solucoes />
       <AboutUs />
       <CallToAction />
-      <Testimonials />
       <Contacs />
       <FaqQuestions />
       <Footer />

@@ -158,20 +158,6 @@ export default function LayoutClientSide({ children }) {
                   </MotionController>
                 </li>
                 <li className={styles.navItem}>
-                  <MotionController delay={0.25}>
-                    <a
-                      href="#solutions-page"
-                      className={`${styles.navLink} ${
-                        section === "solutions-section" ? styles.active : ""
-                      }`}
-                      id="solutions-section"
-                      onClick={(e) => setSectionNavbar(e.target.id)}
-                    >
-                      SOLUÇÕES
-                    </a>
-                  </MotionController>
-                </li>
-                <li className={styles.navItem}>
                   <MotionController delay={0.3}>
                     <a
                       href="#about-page"
@@ -196,20 +182,6 @@ export default function LayoutClientSide({ children }) {
                       onClick={(e) => setSectionNavbar(e.target.id)}
                     >
                       CLIENTES
-                    </a>
-                  </MotionController>
-                </li>
-                <li className={styles.navItem}>
-                  <MotionController delay={0.45}>
-                    <a
-                      href="#testimonials-page"
-                      className={`${styles.navLink} ${
-                        section === "testimonials-section" ? styles.active : ""
-                      }`}
-                      id="testimonials-section"
-                      onClick={(e) => setSectionNavbar(e.target.id)}
-                    >
-                      AVALIAÇÕES
                     </a>
                   </MotionController>
                 </li>
@@ -277,19 +249,6 @@ export default function LayoutClientSide({ children }) {
               </li>
               <li className={styles.navItem}>
                 <a
-                  href="#solutions-page"
-                  className={styles.navLink}
-                  id="solutions-section"
-                  onClick={(e) => {
-                    setSectionNavbar(e.target.id);
-                    toggleMenu();
-                  }}
-                >
-                  SOLUÇÕES
-                </a>
-              </li>
-              <li className={styles.navItem}>
-                <a
                   href="#about-page"
                   className={styles.navLink}
                   id="about-section"
@@ -312,19 +271,6 @@ export default function LayoutClientSide({ children }) {
                   }}
                 >
                   CLIENTES
-                </a>
-              </li>
-              <li className={styles.navItem}>
-                <a
-                  href="#testimonials-page"
-                  className={styles.navLink}
-                  id="testimonials-section"
-                  onClick={(e) => {
-                    setSectionNavbar(e.target.id);
-                    toggleMenu();
-                  }}
-                >
-                  AVALIAÇÕES
                 </a>
               </li>
 
