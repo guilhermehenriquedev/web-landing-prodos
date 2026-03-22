@@ -93,7 +93,7 @@ export default function Footer() {
                   <li className={styles.navItem}>Quem somos</li>
                 </Link>
                 <Link href="#contacts-page">
-                  <li className={styles.navItem}>Contatos</li>
+                  <li className={styles.navItem}>Contato</li>
                 </Link>
                 {/* <Link href="#portfolio-page">
                   <li className={styles.navItem}>Portfólio</li>

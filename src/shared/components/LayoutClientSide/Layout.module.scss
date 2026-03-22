@@ -405,5 +405,22 @@
         }
       }
     }
+
+    .navItemButtonContact {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+      padding: 0 12px;
+
+      .linkButton {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+      }
+    }
   }
 }

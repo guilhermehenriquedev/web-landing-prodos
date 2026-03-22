@@ -174,14 +174,14 @@ export default function LayoutClientSide({ children }) {
                 <li className={styles.navItem}>
                   <MotionController delay={0.4}>
                     <a
-                      href="#clients-page"
+                      href="#contacts-page"
                       className={`${styles.navLink} ${
-                        section === "clients-section" ? styles.active : ""
+                        section === "contacts-section" ? styles.active : ""
                       }`}
-                      id="clients-section"
+                      id="contacts-section"
                       onClick={(e) => setSectionNavbar(e.target.id)}
                     >
-                      CLIENTES
+                      CONTATO
                     </a>
                   </MotionController>
                 </li>
@@ -190,11 +190,11 @@ export default function LayoutClientSide({ children }) {
                   <MotionController delay={0.5}>
                     <a
                       className={styles.linkButton}
-                      href="#contacts-page"
-                      id="contacts-section"
-                      onClick={(e) => setSectionNavbar(e.target.id)}
+                      href="https://cliente.prodosdigital.com.br"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      CONTATOS
+                      ÁREA DO CLIENTE
                     </a>
                   </MotionController>
                 </li>
@@ -262,20 +262,6 @@ export default function LayoutClientSide({ children }) {
               </li>
               <li className={styles.navItem}>
                 <a
-                  href="#clients-page"
-                  className={styles.navLink}
-                  id="clients-section"
-                  onClick={(e) => {
-                    setSectionNavbar(e.target.id);
-                    toggleMenu();
-                  }}
-                >
-                  CLIENTES
-                </a>
-              </li>
-
-              <li className={styles.navItem}>
-                <a
                   href="#contacts-page"
                   className={styles.navLink}
                   id="contacts-section"
@@ -284,7 +270,19 @@ export default function LayoutClientSide({ children }) {
                     toggleMenu();
                   }}
                 >
-                  CONTATOS
+                  CONTATO
+                </a>
+              </li>
+
+              <li className={styles.navItemButtonContact}>
+                <a
+                  href="https://cliente.prodosdigital.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.linkButton}
+                  onClick={() => toggleMenu()}
+                >
+                  ÁREA DO CLIENTE
                 </a>
               </li>
 

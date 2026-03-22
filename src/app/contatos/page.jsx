@@ -35,7 +35,7 @@ export default function Contatos() {
   return (
     <section id="contacts-page" className={styles.section}>
       <TitleSection
-        title="CONTATOS"
+        title="CONTATO"
         subtitle="Entre em contato e solicite
 um orçamento sem compromisso"
       />
