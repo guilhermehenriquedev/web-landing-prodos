@@ -3,6 +3,7 @@ import "../styles/globals.scss";
 
 //Layout
 import LayoutClientSide from "../shared/components/LayoutClientSide";
+import CustomCursor from "../shared/components/CustomCursor";
 
 //Arquivos de fontes
 const manualExpanded = localFont({
@@ -26,9 +27,9 @@ const latoRegular = localFont({
 });
 
 export const metadata = {
-  title: "PRÓDOS DIGITAL | Sistemas sob demanda e automações com IA",
+  title: "PRÓDOS DIGITAL | Sistemas, Agentes de IA e Automação Empresarial",
   description:
-    "Sistemas sob medida, automação de processos e soluções com Inteligência Artificial. Desenvolvimento de software, integrações e consultoria para sua empresa.",
+    "Desenvolvemos sistemas sob demanda, agentes de IA personalizados para o seu negócio e automação de processos empresariais. Tecnologia sob medida para resultados reais.",
 };
 
 export const viewport = {
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
         className={`${manualExpanded.variable} ${latoBold.variable} ${latoLight.variable} ${latoRegular.variable}`}
         suppressHydrationWarning
       >
+        <CustomCursor />
         <LayoutClientSide>{children}</LayoutClientSide>
       </body>
     </html>

@@ -7,23 +7,32 @@
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  padding: 60px 0;
+  padding: 72px 0 80px;
   position: relative;
-  background-image: url("/svg/wave-haikei.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom center;
+
+  // Subtle top gradient
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    width: 600px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba($branding, 0.3),
+      transparent
+    );
+  }
 
   @include md() {
-    padding: 32px 20px;
+    padding: 56px 20px 64px;
   }
 
   @include sm() {
-    padding: 24px 16px;
-  }
-
-  @include xs() {
-    padding: 20px 12px;
+    padding: 40px 16px 48px;
   }
 }
 
@@ -31,63 +40,142 @@
   @include container;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 24px;
   width: 100%;
 
-  @include md() {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+  @include lg() {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  @include sm() {
+  @include md() {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  @include xs() {
-    padding: 0 12px;
+  @include sm() {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
+.cardWrapper {
+  // Needs to be block for MotionController to wrap
+}
+
 .card {
-  // background-color: $bg-secondary;
-  // border: 1px solid $bg-tertiary;
-  border-radius: $border-default;
+  position: relative;
+  padding: 32px 28px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  text-align: center;
+  gap: 0;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+
+  // Glassmorphism base
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  &:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba($branding, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  &:hover .cardGlow {
+    opacity: 1;
+  }
+
+  @include sm() {
+    padding: 24px 20px;
+  }
+}
+
+.cardGlow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba($branding, 0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cardBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to right, $branding, transparent);
+  transition: width 0.4s ease;
+  border-radius: 0 0 16px 0;
+
+  .card:hover & {
+    width: 60%;
+  }
 }
 
 .boxIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $branding;
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba($branding, 0.12);
+  border: 1px solid rgba($branding, 0.2);
+  margin-bottom: 20px;
+  transition: background 0.25s ease, border-color 0.25s ease;
 
-  border-radius: $border-default;
+  .card:hover & {
+    background: rgba($branding, 0.2);
+    border-color: rgba($branding, 0.4);
+  }
 
   svg {
-    width: 38px;
-    height: 38px;
-    color: $bg-primary;
+    width: 26px;
+    height: 26px;
+    color: $branding;
   }
 }
 
 .cardTitle {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: $text-title;
-  margin: 14px 0;
-  text-align: left;
   font-family: var(--font-manual-expanded), sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: $text-title;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 .cardContent {
-  text-align: left;
   color: $text-body;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: $border-xl;
+  border: 1px solid rgba($branding, 0.25);
+  color: rgba($branding, 0.7);
+  background: rgba($branding, 0.05);
 }

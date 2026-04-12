@@ -19,6 +19,23 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  // Hide default cursor on desktop when custom cursor is active
+  @media (hover: hover) and (pointer: fine) {
+    cursor: none;
+  }
+}
+
+// Hide cursor on all interactive elements on desktop
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  label {
+    cursor: none;
+  }
 }
 
 :root {

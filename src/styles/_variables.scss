@@ -1,9 +1,16 @@
 $branding: #e5be5b;
+$branding-dim: rgba(229, 190, 91, 0.12);
+$branding-glow: rgba(229, 190, 91, 0.35);
 
 /* Cores de fundos */
 $bg-primary: #0f0f0f;
 $bg-secondary: #212121;
 $bg-tertiary: #3a3a3a;
+
+/* Glass surfaces */
+$glass-bg: rgba(255, 255, 255, 0.03);
+$glass-border: rgba(255, 255, 255, 0.07);
+$glass-blur: blur(12px);
 
 /* Cores dos textos */
 $text-title: #eeeeee;
@@ -13,3 +20,8 @@ $text-contrast: #212121;
 /* Border radius */
 $border-default: 8px;
 $border-xl: 200px;
+$border-card: 16px;
+
+/* Shadows */
+$shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35);
+$shadow-glow: 0 0 40px $branding-glow;

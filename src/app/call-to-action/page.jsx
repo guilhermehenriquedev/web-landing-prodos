@@ -15,16 +15,14 @@ export default function CallToAction() {
     <section className={styles.section}>
       <MotionController delay={0.4} className={styles.content}>
         <div className={styles.cta}>
-          <h3>Transforme processos em resultados reais!</h3>
+          <h3>Pronto para ter um agente de IA trabalhando pelo seu negócio?</h3>
           <p>
-            Desenvolvemos sistemas sob medida, automações e soluções com
-            Inteligência Artificial para o seu negócio. Seja para otimizar
-            operações, integrar sistemas ou automatizar decisões, estamos
-            prontos para ajudar.
+            Desenvolvemos sistemas sob demanda, agentes de IA dedicados ao seu
+            contexto e automação de processos empresariais. Cada solução é
+            desenhada do zero para o seu negócio — sem atalhos genéricos.
           </p>
           <p>
-            Entre em contato e descubra como podemos impulsionar a eficiência
-            da sua empresa!
+            Fale com a gente e descubra como podemos transformar a sua operação!
           </p>
 
           <div style={{ marginTop: "30px" }} />

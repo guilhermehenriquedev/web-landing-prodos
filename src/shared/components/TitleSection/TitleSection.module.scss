@@ -8,21 +8,38 @@
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
-  margin: 40px 0 80px 0;
+  margin: 16px 0 40px 0;
 
   @include md() {
     align-items: flex-start;
     flex-direction: column;
-    margin: 40px 0 40px 0;
+    margin: 16px 0 28px 0;
   }
 
   @include sm() {
-    margin: 24px 0 32px 0;
+    margin: 12px 0 24px 0;
   }
 
   @include xs() {
-    margin: 20px 0 28px 0;
+    margin: 10px 0 20px 0;
     padding: 0 12px;
+  }
+}
+
+/* Menos espaço vertical — ex.: fluxo de automação colado às secções vizinhas */
+.containerTitleSectionCompact {
+  margin: 4px 0 20px 0;
+
+  @include md() {
+    margin: 4px 0 16px 0;
+  }
+
+  @include sm() {
+    margin: 4px 0 14px 0;
+  }
+
+  @include xs() {
+    margin: 4px 0 12px 0;
   }
 }
 

@@ -7,20 +7,20 @@
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  padding: 60px 0;
+  padding: 56px 0;
   position: relative;
   background-color: $bg-secondary;
 
   @include md() {
-    padding: 32px 20px;
+    padding: 40px 20px;
   }
 
   @include sm() {
-    padding: 24px 16px;
+    padding: 32px 16px;
   }
 
   @include xs() {
-    padding: 20px 12px;
+    padding: 24px 12px;
   }
 }
 
@@ -61,8 +61,19 @@
     flex: 0.4;
     margin-left: 30px;
     position: relative;
-    // height: auto;
     aspect-ratio: 1;
+
+    @include md() {
+      margin-left: 0;
+      margin-top: 24px;
+      width: 100%;
+      max-width: 280px;
+      align-self: center;
+    }
+
+    @include sm() {
+      max-width: 200px;
+    }
   }
 }
 

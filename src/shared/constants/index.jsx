@@ -24,9 +24,9 @@ export const SOLUTIONS = [
   },
   {
     id: 3,
-    name: "Automação de Atendimento",
+    name: "Agente de Atendimento",
     description:
-      "Sistema de filas, triagem e respostas automatizadas com IA. Reduz tempo de espera e padroniza o atendimento.",
+      "Agente de IA dedicado ao atendimento da sua empresa — treinado com seu contexto, integrado aos seus canais e capaz de resolver demandas reais sem intervenção humana.",
     image: null,
     link: null,
   },
@@ -75,7 +75,7 @@ export const TESTIMONIALS = [
     name: "Fernanda Lima",
     role: "Gerente de Projetos",
     company: "Startup Tech",
-    text: "Contratamos a PRÓDOS para um projeto com IA. Resultado além do esperado: processo automatizado, menos retrabalho e decisões mais rápidas. Parceria de confiança.",
+    text: "Contratamos a PRÓDOS para desenvolver um agente de IA dedicado à nossa operação. Resultado além do esperado: processo autônomo, menos retrabalho e decisões muito mais rápidas. Parceria de confiança.",
     rating: 5,
     image: null,
   },
@@ -86,37 +86,37 @@ export const FAQ_QUESTIONS = [
     id: 1,
     question: "O que são sistemas sob demanda?",
     answer:
-      "São sistemas desenvolvidos exclusivamente para o seu negócio (web, mobile ou integrados), como ERPs, CRMs, portais e dashboards, desenhados para atender às suas regras de negócio e processos.",
+      "São sistemas desenvolvidos exclusivamente para o seu negócio — ERPs, CRMs, portais, dashboards e plataformas criados do zero para se adaptar às suas regras, processos e equipe.",
   },
   {
     id: 2,
-    question: "Como a Inteligência Artificial entra nas automações?",
+    question: "O que é um agente de IA personalizado?",
     answer:
-      "Usamos IA para classificar dados, extrair informações de documentos, automatizar respostas (chatbots), analisar padrões e apoiar decisões, sempre alinhada ao seu processo e com foco em resultado.",
+      "É uma IA treinada e configurada especificamente para o contexto do seu negócio. Diferente de chatbots genéricos, o agente aprende os seus processos, opera nos seus fluxos internos e entrega ações concretas — não apenas respostas de texto.",
   },
   {
     id: 3,
-    question: "Vocês fazem integração com sistemas que eu já uso?",
+    question: "Como um agente de IA se diferencia de um chatbot comum?",
     answer:
-      "Sim. Desenvolvemos integrações via APIs e conectores para que seus sistemas, planilhas e ferramentas troquem dados de forma segura e automatizada.",
+      "Um chatbot genérico responde perguntas com base em dados públicos. Nosso agente é dedicado: ele é treinado com o conhecimento da sua empresa, integrado aos seus sistemas e capaz de executar tarefas reais dentro da sua operação.",
   },
   {
     id: 4,
-    question: "Como funciona o processo de desenvolvimento?",
+    question: "O que vocês automatizam nos processos empresariais?",
     answer:
-      "Trabalhamos em conjunto com você para mapear necessidades, desenhar a solução e desenvolver em etapas, com validações e entrega contínua, sempre com foco no resultado do negócio.",
+      "Mapeamos e automatizamos processos repetitivos e críticos: aprovações, geração de documentos, envio de notificações, coleta de dados, integrações entre sistemas e qualquer fluxo que hoje depende de execução manual.",
   },
   {
     id: 5,
-    question: "Quanto tempo leva um projeto?",
+    question: "Como funciona o processo de desenvolvimento?",
     answer:
-      "Depende do escopo: automações pontuais podem levar algumas semanas; sistemas completos, alguns meses. Após entender sua demanda, apresentamos prazo e etapas de entrega.",
+      "Trabalhamos junto com você para entender o negócio, mapear os processos e desenhar a solução ideal. O desenvolvimento acontece em etapas, com validações contínuas e foco em resultado — não apenas em entrega técnica.",
   },
   {
     id: 6,
     question: "Oferecem suporte após a entrega?",
     answer:
-      "Sim. Oferecemos manutenção, evolução e consultoria para que as soluções permaneçam atualizadas, seguras e alinhadas às suas necessidades.",
+      "Sim. Oferecemos manutenção, evolução e suporte contínuo para que as soluções se mantenham atualizadas, seguras e alinhadas com o crescimento do seu negócio.",
   },
   {
     id: 7,

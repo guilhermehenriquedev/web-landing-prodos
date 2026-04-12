@@ -1,17 +1,12 @@
 "use client";
+import { useRef } from "react";
 import styles from "./services.module.scss";
-
-//Components
 import TitleSection from "@/shared/components/TitleSection";
 import MotionController from "@/shared/components/MotionController";
 
-//Icons
 import { MdDeveloperMode } from "react-icons/md";
 import { RiRobot2Fill } from "react-icons/ri";
-import { GrAnalytics } from "react-icons/gr";
-import { IoSparkles } from "react-icons/io5";
-import { TbApi } from "react-icons/tb";
-import { HiOutlineLightBulb } from "react-icons/hi2";
+import { TbBuildingFactory2 } from "react-icons/tb";
 
 const cards = [
   {
@@ -19,60 +14,83 @@ const cards = [
     icon: <MdDeveloperMode />,
     title: "Sistemas sob demanda",
     description:
-      "Desenvolvemos sistemas web e mobile sob medida: ERPs, CRMs, portais e dashboards que se adaptam às necessidades exclusivas do seu negócio.",
+      "Desenvolvemos sistemas web e mobile exclusivos para o seu negócio: ERPs, CRMs, portais, dashboards e plataformas desenhados do zero para se adaptar às suas regras e processos.",
+    tags: ["Web", "Mobile", "ERP", "CRM"],
   },
   {
     id: 2,
     icon: <RiRobot2Fill />,
-    title: "Automação de processos",
+    title: "Agentes de IA personalizados",
     description:
-      "Automatizamos tarefas repetitivas, integrações entre sistemas e workflows, reduzindo custos e aumentando a eficiência operacional.",
+      "Criamos agentes de IA dedicados e treinados para a realidade do seu negócio — que entendem o seu contexto, operam nos seus fluxos e entregam resultados concretos, não respostas genéricas.",
+    tags: ["IA Dedicada", "LLM", "Fluxo próprio"],
   },
   {
     id: 3,
-    icon: <IoSparkles />,
-    title: "Soluções com Inteligência Artificial",
+    icon: <TbBuildingFactory2 />,
+    title: "Automação de processos",
     description:
-      "Chatbots, assistentes virtuais, análise e classificação de dados, extração de informações e decisões automatizadas com IA.",
-  },
-  {
-    id: 4,
-    icon: <TbApi />,
-    title: "Integração entre sistemas",
-    description:
-      "Conectamos seus sistemas, APIs e ferramentas para que dados e processos fluam de forma segura e automatizada.",
-  },
-  {
-    id: 5,
-    icon: <GrAnalytics />,
-    title: "Análise de dados",
-    description:
-      "Transformamos dados em insights para decisões estratégicas, relatórios e indicadores que impulsionam o crescimento.",
-  },
-  {
-    id: 6,
-    icon: <HiOutlineLightBulb />,
-    title: "Consultoria e desenho de processos",
-    description:
-      "Ajudamos a mapear processos, definir arquitetura de sistemas e escolher as melhores ferramentas para sua operação.",
+      "Mapeamos e automatizamos processos empresariais repetitivos e críticos, eliminando retrabalho, reduzindo erros e liberando sua equipe para o que realmente importa.",
+    tags: ["BPA", "RPA", "Integrações"],
   },
 ];
+
+function TiltCard({ card, index }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const rotX = ((y - cy) / cy) * -8;
+    const rotY = ((x - cx) / cx) * 8;
+    card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.025)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (cardRef.current) {
+      cardRef.current.style.transform =
+        "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
+    }
+  };
+
+  return (
+    <MotionController index={index} delay={0.05} className={styles.cardWrapper}>
+      <div
+        ref={cardRef}
+        className={styles.card}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className={styles.cardGlow} />
+        <div className={styles.boxIcon}>{card.icon}</div>
+        <h4 className={styles.cardTitle}>{card.title.toUpperCase()}</h4>
+        <p className={styles.cardContent}>{card.description}</p>
+        <div className={styles.tags}>
+          {card.tags.map((tag) => (
+            <span key={tag} className={styles.tag}>{tag}</span>
+          ))}
+        </div>
+        <div className={styles.cardBorder} />
+      </div>
+    </MotionController>
+  );
+}
 
 export default function Services() {
   return (
     <section id="services-page" className={styles.section}>
       <TitleSection
-        title="NOSSOS SERVIÇOS"
-        subtitle="Sistemas, automações e inteligência artificial sob medida para o seu negócio"
+        title="O QUE FAZEMOS"
+        subtitle="Três frentes de atuação, um único objetivo: resultado real para o seu negócio"
       />
-
       <div className={styles.grid}>
         {cards.map((card, index) => (
-          <MotionController key={card.id} className={styles.card}>
-            <div className={styles.boxIcon}>{card.icon}</div>
-            <h4 className={styles.cardTitle}>{card.title.toUpperCase()}</h4>
-            <p className={styles.cardContent}>{card.description}</p>
-          </MotionController>
+          <TiltCard key={card.id} card={card} index={index} />
         ))}
       </div>
     </section>

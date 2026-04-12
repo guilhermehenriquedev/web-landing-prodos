@@ -23,10 +23,9 @@ export default function Contatos() {
   const [service, setService] = useState("");
 
   const serviceLabels = {
-    sistema: "Sistema sob medida",
-    automacao: "Automação",
-    ia: "Solução com IA",
-    integracao: "Integração entre sistemas",
+    sistema: "Sistema sob demanda",
+    agente: "Agente de IA personalizado",
+    automacao: "Automação de processos",
     outro: "Outro",
   };
 
@@ -93,10 +92,9 @@ um orçamento sem compromisso"
               className={styles.select}
             >
               <option value="">Selecione o tipo de serviço</option>
-              <option value="sistema">Sistema sob medida</option>
-              <option value="automacao">Automação</option>
-              <option value="ia">Solução com IA</option>
-              <option value="integracao">Integração entre sistemas</option>
+              <option value="sistema">Sistema sob demanda</option>
+              <option value="agente">Agente de IA personalizado</option>
+              <option value="automacao">Automação de processos</option>
               <option value="outro">Outro</option>
             </select>
           </div>
