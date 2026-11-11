@@ -4,7 +4,6 @@ import styles from "./styles.module.scss";
 
 const COUNT = 90;
 const CONNECT_DIST = 160;
-const GOLD = "229, 190, 91";
 
 export default function ParticleBackground() {
   const canvasRef = useRef(null);
@@ -14,6 +13,7 @@ export default function ParticleBackground() {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
+    const corMarca = getComputedStyle(document.documentElement).getPropertyValue("--cor-marca-rgb").trim();
     let w = 0;
     let h = 0;
     let rafId;
@@ -50,7 +50,7 @@ export default function ParticleBackground() {
         // Dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${GOLD}, 0.75)`;
+        ctx.fillStyle = `rgba(${corMarca}, 0.75)`;
         ctx.fill();
 
         // Lines to neighbours
@@ -64,7 +64,7 @@ export default function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(${GOLD}, ${alpha})`;
+            ctx.strokeStyle = `rgba(${corMarca}, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }

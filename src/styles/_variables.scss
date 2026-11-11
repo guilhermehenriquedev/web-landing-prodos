@@ -1,21 +1,38 @@
-$branding: #e5be5b;
-$branding-dim: rgba(229, 190, 91, 0.12);
-$branding-glow: rgba(229, 190, 91, 0.35);
+/* Mesma paleta do tema escuro do Gestão e do Alcance */
+$branding: #3a8bff;
+$branding-rgb: 58, 139, 255;
+$branding-dim: rgba($branding, 0.12);
+$branding-glow: rgba($branding, 0.35);
+
+/* Fundo de botões e faixas com texto branco: #3a8bff com branco não passa no AA em texto pequeno */
+$botao: #1d6ad8;
+$botao-hover: $branding;
+
+$marca-indigo: #2b44e8;
+$marca-azul: #1e78f0;
+$marca-celeste: #06b8f8;
+$marca-ciano: #00e6ff;
+$gradiente-marca: linear-gradient(135deg, $marca-indigo 0%, $marca-azul 35%, $marca-celeste 70%, $marca-ciano 100%);
+/* Realce de seção que some à direita */
+$gradiente-linha: linear-gradient(90deg, $marca-indigo 0%, $marca-azul 35%, $marca-celeste 70%, transparent 100%);
+/* Versão sem os tons claros, para superfícies com texto branco por cima */
+$gradiente-superficie: linear-gradient(135deg, $marca-indigo 0%, $botao 100%);
 
 /* Cores de fundos */
-$bg-primary: #0f0f0f;
-$bg-secondary: #212121;
-$bg-tertiary: #3a3a3a;
+$bg-primary: #060a13;
+$bg-secondary: #0d1422;
+$bg-tertiary: #16213a;
 
 /* Glass surfaces */
-$glass-bg: rgba(255, 255, 255, 0.03);
-$glass-border: rgba(255, 255, 255, 0.07);
+$glass-bg: rgba(154, 180, 226, 0.04);
+$glass-border: rgba(154, 180, 226, 0.18);
 $glass-blur: blur(12px);
+$divisoria: rgba(154, 180, 226, 0.18);
 
 /* Cores dos textos */
-$text-title: #eeeeee;
-$text-body: #bdbdbd;
-$text-contrast: #212121;
+$text-title: #eaf1ff;
+$text-body: #95a6c6;
+$text-contrast: #ffffff;
 
 /* Border radius */
 $border-default: 8px;
@@ -23,5 +40,5 @@ $border-xl: 200px;
 $border-card: 16px;
 
 /* Shadows */
-$shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35);
+$shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
 $shadow-glow: 0 0 40px $branding-glow;

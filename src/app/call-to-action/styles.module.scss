@@ -31,7 +31,7 @@
   flex-direction: column;
   padding: 40px 60px;
   border-radius: $border-default;
-  background: linear-gradient(to right, #dfa30e, #e5be5b, $branding);
+  background: $gradiente-superficie;
   position: relative;
 
   @include md() {

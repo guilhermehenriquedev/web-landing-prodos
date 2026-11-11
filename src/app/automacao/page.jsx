@@ -73,7 +73,7 @@ export default function AutomationFlow() {
               <motion.path
                 key={i}
                 d={d}
-                stroke="rgba(229,190,91,0.3)"
+                stroke="rgba(var(--cor-marca-rgb), 0.3)"
                 strokeWidth="1.5"
                 strokeDasharray="6 4"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -96,7 +96,7 @@ export default function AutomationFlow() {
                 <motion.circle
                   key={`dot-${i}`}
                   r="3"
-                  fill="#e5be5b"
+                  fill="var(--cor-marca)"
                   opacity={0.8}
                 >
                   <animateMotion
@@ -124,15 +124,15 @@ export default function AutomationFlow() {
                   width={NODE_W}
                   height={NODE_H}
                   rx="10"
-                  fill="rgba(15, 15, 15, 0.92)"
-                  stroke="rgba(229,190,91,0.3)"
+                  fill="var(--cor-fundo)"
+                  stroke="rgba(var(--cor-marca-rgb), 0.3)"
                   strokeWidth="1.5"
                 />
                 <text
                   x={NODE_W / 2}
                   y={26}
                   textAnchor="middle"
-                  fill="#e5be5b"
+                  fill="var(--cor-marca)"
                   fontSize="30"
                   dominantBaseline="middle"
                 >
@@ -142,7 +142,7 @@ export default function AutomationFlow() {
                   x={NODE_W / 2}
                   y={50}
                   textAnchor="middle"
-                  fill="#eeeeee"
+                  fill="var(--cor-texto-titulo)"
                   fontSize="11.5"
                   fontFamily="sans-serif"
                   letterSpacing="0.5"

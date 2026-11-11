@@ -40,6 +40,22 @@ body {
 
 :root {
   background-color: $bg-primary;
+  color-scheme: dark;
+
+  // Para JSX que desenha em canvas ou SVG e não alcança os tokens do SCSS
+  --cor-marca: #{$branding};
+  --cor-marca-rgb: #{$branding-rgb};
+  --cor-fundo: #{$bg-primary};
+  --cor-texto-titulo: #{$text-title};
+}
+
+body {
+  background-color: $bg-primary;
+}
+
+:focus-visible {
+  outline: 2px solid $branding;
+  outline-offset: 2px;
 }
 
 a {
@@ -60,7 +76,7 @@ a {
 }
 
 ::selection {
-  background: $branding;
+  background: $botao;
   color: $text-contrast;
 }
 

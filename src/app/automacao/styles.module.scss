@@ -79,18 +79,18 @@
   width: 100%;
   padding: 16px 20px;
   border-radius: 12px;
-  background: rgba(15, 15, 15, 0.92);
-  border: 1px solid rgba(229, 190, 91, 0.25);
+  background: rgba($bg-primary, 0.92);
+  border: 1px solid rgba($branding, 0.25);
   text-align: center;
 }
 
 .mobileNodeHighlight {
-  border-color: rgba(229, 190, 91, 0.5);
-  background: rgba(229, 190, 91, 0.06);
+  border-color: rgba($branding, 0.5);
+  background: rgba($branding, 0.06);
 }
 
 .mobileNodeOut {
-  border-color: rgba(229, 190, 91, 0.4);
+  border-color: rgba($branding, 0.4);
 }
 
 .mobileIcon {
@@ -109,7 +109,7 @@
 .mobileConnector {
   width: 1.5px;
   height: 32px;
-  background: linear-gradient(to bottom, rgba(229, 190, 91, 0.35), rgba(229, 190, 91, 0.1));
+  background: linear-gradient(to bottom, rgba($branding, 0.35), rgba($branding, 0.1));
   flex-shrink: 0;
   position: relative;
 
@@ -122,7 +122,7 @@
     height: 6px;
     border-radius: 50%;
     background: $branding;
-    box-shadow: 0 0 6px rgba(229, 190, 91, 0.6);
+    box-shadow: 0 0 6px rgba($branding, 0.6);
     animation: dotFlowDown 1.6s ease-in-out infinite;
   }
 }
@@ -136,7 +136,7 @@
 .mobileBranchLine {
   width: 1.5px;
   height: 28px;
-  background: linear-gradient(to bottom, rgba(229, 190, 91, 0.3), rgba(229, 190, 91, 0.08));
+  background: linear-gradient(to bottom, rgba($branding, 0.3), rgba($branding, 0.08));
   position: relative;
 
   &::after {
@@ -148,7 +148,7 @@
     height: 5px;
     border-radius: 50%;
     background: $branding;
-    box-shadow: 0 0 5px rgba(229, 190, 91, 0.5);
+    box-shadow: 0 0 5px rgba($branding, 0.5);
     animation: dotFlowDown 1.6s ease-in-out infinite;
   }
 

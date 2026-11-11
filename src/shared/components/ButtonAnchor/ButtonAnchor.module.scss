@@ -8,16 +8,16 @@
   text-decoration: none;
   padding: 12px 26px;
   transition: all 0.2s ease-in-out;
-  background-color: $branding;
+  background-color: $botao;
   color: $text-contrast;
   border-radius: $border-xl;
   border: 2px solid transparent;
   font-family: var(--font-manual-expanded), sans-serif;
 
   &:hover {
-    border: 2px solid $branding;
+    border: 2px solid $botao-hover;
     background-color: $bg-primary;
-    color: $branding;
+    color: $botao-hover;
   }
 
   svg {
@@ -55,7 +55,7 @@
 
   &:hover {
     border: 2px solid $bg-primary;
-    background-color: $branding;
+    background-color: $botao;
     color: $text-contrast;
   }
 

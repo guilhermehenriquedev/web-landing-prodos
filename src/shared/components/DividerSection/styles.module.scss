@@ -11,9 +11,8 @@
 }
 
 .content {
-  background-color: $branding;
   width: 100%;
   height: 20px;
   margin-top: 10px;
-  background: linear-gradient(to right, #dfa30e, #e5be5b, $branding);
+  background: $gradiente-marca;
 }
