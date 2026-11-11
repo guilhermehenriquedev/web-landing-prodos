@@ -11,10 +11,10 @@ export default function LogoHeader() {
     <Link href="#home-page">
       <MotionController className={styles.container}>
         <Image
-          src="/img/logo.png"
+          src="/img/logo.svg"
           alt="Logomarca da Pródos digital"
           width={70}
-          height={70}
+          height={54}
           quality={100}
         />
         <span className={styles.brandName}>PRÓDOS DIGITAL</span>

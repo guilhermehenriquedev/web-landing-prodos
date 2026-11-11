@@ -38,7 +38,7 @@ export default function AboutUs() {
 
         <MotionController className={styles.containerImage}>
           <Image
-            src="/img/logo_full.png"
+            src="/img/logo-sobre-nos.webp"
             alt="Logo da Pródos Digital"
             fill
             quality={100}

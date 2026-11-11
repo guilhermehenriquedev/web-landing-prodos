@@ -35,10 +35,10 @@ export default function Footer() {
             <MotionController className={styles.nav}>
               <div className={styles.imgWrapper}>
                 <Image
-                  src="/img/logo.png"
+                  src="/img/logo.svg"
                   alt="Logo da Pródos digital"
                   width={200}
-                  height={200}
+                  height={153}
                   quality={100}
                 />
 
