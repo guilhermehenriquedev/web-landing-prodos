@@ -21,3 +21,11 @@ L1 e L2 não dependem do Gestão e já colocam o site melhor no ar. G9 deve esta
 - Contrato entre landing e Gestão: docs/contrato-site-api.md (fonte única).
 
 - V1-identidade-nova-cores-e-logos.md — antes da L1: landing no azul do Gestão/Alcance e logo nova nos três sistemas.
+
+## Situação do V1 (feito em 11/11/2026, branch `v1-identidade-nova`)
+- A parte "visual azul" da L1 já está adiantada: a landing usa o tema escuro do Gestão/Alcance e a logo nova, e não sobrou dourado.
+- A L1 deve reutilizar os tokens de `src/styles/_variables.scss` em vez de criar outros: `$branding` (#3A8BFF, destaques e ícones), `$botao` (#1D6AD8, fundo de botão com texto branco), `$botao-hover`, `$bg-primary/secondary/tertiary`, `$text-title/body/contrast`, `$divisoria`, `$glass-*`, `$gradiente-marca` (só em realces, nunca em texto corrido), `$gradiente-linha` e `$gradiente-superficie` (fundo com texto branco).
+- Para canvas e SVG em JSX, `globals.scss` expõe `--cor-marca`, `--cor-marca-rgb`, `--cor-fundo` e `--cor-texto-titulo`.
+- As "seções de conteúdo claras" da L1 precisam de tokens claros novos; use os do tema claro do Gestão (`#EEF2F9`, `#FFFFFF`, `#0F172A`, `#475569`, links `#1D6AD8`).
+- O projeto não tem ESLint configurado (`npm run lint` abre o assistente do Next). Configurar o lint fica para a L1.
+- Capturas e relatório em `docs/execucao/identidade-nova/`.
