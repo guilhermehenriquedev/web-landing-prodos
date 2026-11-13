@@ -1,0 +1,396 @@
+@use "@/styles/variables" as *;
+@use "@/styles/media" as *;
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(6, 10, 19, 0.88);
+  backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid $divisoria;
+  color: $text-title;
+}
+
+.topoInterno {
+  @include container;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: var(--altura-topo);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  color: $text-title;
+  flex-shrink: 0;
+
+  img {
+    width: 36px;
+    height: auto;
+  }
+}
+
+.navDesktop {
+  display: none;
+  margin-left: auto;
+
+  @include a-partir($md) {
+    display: block;
+  }
+
+  > ul {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+
+  > ul > li {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.linkTopo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: $text-body;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color $transicao, background-color $transicao;
+
+  &:hover {
+    color: $text-title;
+    background: rgba(154, 180, 226, 0.08);
+  }
+}
+
+.seta {
+  margin-left: -8px;
+  color: $text-body;
+  pointer-events: none;
+  transition: transform $transicao;
+}
+
+.submenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 240px;
+  padding: 8px;
+  list-style: none;
+  border-radius: $raio;
+  background: $bg-secondary;
+  border: 1px solid $glass-border;
+  box-shadow: $shadow-card;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity $transicao, transform $transicao, visibility $transicao;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -10px 0 auto;
+    height: 10px;
+  }
+}
+
+.temSubmenu:hover,
+.temSubmenu:focus-within {
+  .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .seta {
+    transform: rotate(180deg);
+  }
+}
+
+.linkSubmenu {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: $text-title;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  &:hover {
+    background: rgba(58, 139, 255, 0.14);
+  }
+}
+
+.acoesTopo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+
+  @include a-partir($md) {
+    margin-left: 8px;
+  }
+}
+
+.botaoTopo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: $botao;
+  color: $text-contrast;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background-color $transicao;
+
+  &:hover {
+    background: color-mix(in srgb, $botao 85%, #000);
+  }
+}
+
+.acoesTopo > .botaoTopo {
+  display: none;
+
+  @include a-partir($sm) {
+    display: inline-flex;
+  }
+}
+
+.botaoMenu {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid $glass-border;
+  background: transparent;
+  color: $text-title;
+
+  @include a-partir($md) {
+    display: none;
+  }
+}
+
+.painelMovel {
+  position: fixed;
+  inset: var(--altura-topo) 0 0;
+  overflow-y: auto;
+  padding: 16px 16px 32px;
+  background: $bg-primary;
+
+  &[hidden] {
+    display: none;
+  }
+
+  @include a-partir($md) {
+    display: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  > ul > li {
+    padding-block: 4px;
+    border-bottom: 1px solid $divisoria;
+  }
+
+  .botaoTopo {
+    margin-top: 16px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.linkMovel,
+.grupoMovel {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $text-title;
+}
+
+.grupoMovel {
+  color: $text-body;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  min-height: 40px;
+}
+
+.linkMovelFilho {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-left: 16px;
+  color: $text-body;
+  font-weight: 600;
+
+  &:hover {
+    color: $text-title;
+  }
+}
+
+.rodape {
+  background: $bg-primary;
+  color: $text-body;
+  border-top: 1px solid $divisoria;
+}
+
+.rodapeInterno {
+  @include container;
+  display: grid;
+  gap: 32px;
+  padding-block: 48px 32px;
+
+  @include a-partir($sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include a-partir($md) {
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+  }
+}
+
+.rodapeMarca {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+
+  p {
+    max-width: 38ch;
+  }
+
+  @include a-partir($sm) {
+    grid-column: 1 / -1;
+  }
+
+  @include a-partir($md) {
+    grid-column: auto;
+  }
+}
+
+.contato {
+  display: grid;
+  gap: 4px;
+  font-style: normal;
+
+  a,
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    color: $text-title;
+    overflow-wrap: anywhere;
+  }
+
+  a:hover {
+    color: $branding;
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: $branding;
+  }
+}
+
+.colunaRodape {
+  h2 {
+    margin-bottom: 8px;
+    color: $text-title;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+
+    &:hover {
+      color: $text-title;
+    }
+  }
+}
+
+.rodapeBase {
+  @include container;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 20px 96px;
+  border-top: 1px solid $divisoria;
+  font-size: 0.875rem;
+
+  @include a-partir($sm) {
+    padding-bottom: 24px;
+  }
+}
+
+.redes {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+
+    &:hover {
+      color: $text-title;
+    }
+  }
+}
+
+.whatsapp {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #0b7a43;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(6, 10, 19, 0.35);
+  transition: transform $transicao, background-color $transicao;
+
+  &:hover {
+    background: #096b3a;
+    transform: translateY(-2px);
+  }
+}
+
+.whatsappTexto {
+  display: none;
+
+  @include a-partir($sm) {
+    display: inline;
+  }
+}

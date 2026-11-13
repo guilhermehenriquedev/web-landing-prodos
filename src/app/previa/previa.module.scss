@@ -1,0 +1,10 @@
+.faixa {
+  position: sticky;
+  top: var(--altura-topo);
+  z-index: 45;
+  padding: 10px 16px;
+  background: #fef3c7;
+  color: #78350f;
+  font-weight: 700;
+  text-align: center;
+}

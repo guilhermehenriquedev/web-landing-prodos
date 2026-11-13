@@ -1,0 +1,149 @@
+@use "@/styles/variables" as *;
+@use "@/styles/media" as *;
+
+.interno {
+  @include container;
+}
+
+.cabecalho {
+  padding-block: 40px 48px;
+  background:
+    radial-gradient(60% 90% at 90% 0%, rgba(43, 68, 232, 0.28), transparent 70%),
+    $bg-primary;
+  color: $text-title;
+
+  @include a-partir($md) {
+    padding-block: 56px 72px;
+  }
+
+  h1 {
+    margin-top: 16px;
+    font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    margin-top: 12px;
+    max-width: 62ch;
+    color: #b4c3de;
+    font-size: 1.1rem;
+  }
+}
+
+.relacionado {
+  padding-block: 56px;
+  background: $claro-fundo;
+
+  h2 {
+    margin-bottom: 20px;
+    color: $claro-titulo;
+    font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+    letter-spacing: -0.02em;
+  }
+
+  article {
+    max-width: 760px;
+  }
+}
+
+.secao {
+  padding-block: 56px 72px;
+  background: $claro-fundo;
+
+  h2 {
+    margin-bottom: 24px;
+    color: $claro-titulo;
+    font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+    letter-spacing: -0.02em;
+  }
+}
+
+.listaLinks {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+
+  @include a-partir($sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 56px;
+    padding: 12px 18px;
+    border-radius: $raio;
+    border: 1px solid $claro-borda;
+    background: $claro-superficie;
+    color: $claro-titulo;
+    font-weight: 700;
+
+    &:hover {
+      border-color: $claro-link;
+      color: $claro-link;
+    }
+  }
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  list-style: none;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid $claro-borda;
+    background: $claro-superficie;
+    color: $claro-titulo;
+    font-weight: 600;
+    font-size: 0.925rem;
+
+    &:hover,
+    &[aria-current="page"] {
+      border-color: $claro-link;
+      background: $claro-realce;
+      color: $claro-link;
+    }
+  }
+}
+
+.vazio {
+  padding: 48px 0;
+  color: $claro-texto;
+  text-align: center;
+}
+
+.erro404 {
+  @include container;
+  padding-block: 80px;
+  text-align: center;
+
+  h1 {
+    color: $claro-titulo;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+
+  p {
+    margin: 12px auto 0;
+    max-width: 52ch;
+    color: $claro-texto;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+    list-style: none;
+  }
+}

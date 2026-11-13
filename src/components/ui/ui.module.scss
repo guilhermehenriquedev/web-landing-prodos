@@ -1,0 +1,221 @@
+@use "@/styles/variables" as *;
+@use "@/styles/media" as *;
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  font-weight: 700;
+  font-size: 0.975rem;
+  line-height: 1.2;
+  text-align: center;
+  transition: background-color $transicao, border-color $transicao, color $transicao, transform $transicao;
+
+  svg {
+    transition: transform $transicao;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.grande {
+  min-height: 54px;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+}
+
+.primario {
+  background: $botao;
+  color: $text-contrast;
+
+  &:hover {
+    background: color-mix(in srgb, $botao 85%, #000);
+  }
+}
+
+.secundario {
+  border-color: rgba(154, 180, 226, 0.45);
+  color: $text-title;
+  background: rgba(154, 180, 226, 0.06);
+
+  &:hover {
+    border-color: $branding;
+    background: rgba(58, 139, 255, 0.12);
+  }
+}
+
+/* Principal sobre faixa azul */
+.inverso {
+  background: $claro-superficie;
+  color: $botao;
+
+  &:hover {
+    background: #e8f0fe;
+  }
+}
+
+/* Secundário sobre fundo claro */
+.claro {
+  border-color: $claro-borda;
+  color: $claro-titulo;
+  background: $claro-superficie;
+
+  &:hover {
+    border-color: $claro-link;
+    color: $claro-link;
+  }
+}
+
+.link {
+  min-height: 44px;
+  padding-inline: 4px;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.trilha {
+  font-size: 0.875rem;
+  color: $claro-texto;
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    list-style: none;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+
+    &:not(:last-child)::after {
+      content: "/";
+      opacity: 0.5;
+    }
+  }
+
+  a {
+    color: $claro-link;
+    padding-block: 8px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  [aria-current] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60vw;
+  }
+}
+
+.trilhaEscura {
+  color: $text-body;
+
+  a {
+    color: $text-title;
+  }
+}
+
+/* Texto corrido: largura de leitura, ritmo vertical e links visíveis */
+.prosa {
+  max-width: $largura-leitura;
+  color: #334155;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+
+  > * + * {
+    margin-top: 1.1em;
+  }
+
+  h2 {
+    margin-top: 2em;
+    color: $claro-titulo;
+    font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.75rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    margin-top: 1.6em;
+    color: $claro-titulo;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  h2 + *,
+  h3 + * {
+    margin-top: 0.6em;
+  }
+
+  a {
+    color: $claro-link;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  strong {
+    color: $claro-titulo;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.4em;
+
+    li + li {
+      margin-top: 0.45em;
+    }
+
+    li::marker {
+      color: $claro-link;
+    }
+  }
+
+  blockquote {
+    padding: 16px 20px;
+    border-left: 4px solid $claro-link;
+    border-radius: 0 $raio $raio 0;
+    background: $claro-realce;
+    color: $claro-titulo;
+  }
+
+  img {
+    height: auto;
+    border-radius: $raio;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 8px 12px;
+      border: 1px solid $claro-borda;
+      text-align: left;
+    }
+  }
+}

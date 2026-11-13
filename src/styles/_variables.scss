@@ -42,3 +42,19 @@ $border-card: 16px;
 /* Shadows */
 $shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
 $shadow-glow: 0 0 40px $branding-glow;
+
+/* Áreas de leitura (blog, artigos, serviços): tokens claros do Gestão */
+$claro-fundo: #eef2f9;
+$claro-superficie: #ffffff;
+$claro-titulo: #0f172a;
+$claro-texto: #475569;
+$claro-link: #1d6ad8;
+$claro-borda: #e2e8f0;
+$claro-realce: #e3ecfb;
+
+$fonte: var(--fonte-jakarta), system-ui, -apple-system, "Segoe UI", sans-serif;
+$largura-leitura: 70ch;
+$largura-site: 1200px;
+$raio: 12px;
+$raio-card: 16px;
+$transicao: 180ms cubic-bezier(0.2, 0, 0, 1);
