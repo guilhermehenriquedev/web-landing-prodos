@@ -1,3 +1,4 @@
+import { AsyncLocalStorage } from "node:async_hooks";
 import { createHash } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -63,10 +64,30 @@ async function lerCopia<T>(caminho: string): Promise<T | undefined> {
 
 type Opcoes = { tags: string[]; semCache?: boolean };
 
+// generateStaticParams roda no mesmo processo que o prerender. O contexto separa os dois:
+// na lista de rotas o erro vira []; na página, o build adia a renderização.
+const coletaDeRotas = new AsyncLocalStorage<true>();
+
+function detalheDaFalha(erro: unknown): string {
+  if (!(erro instanceof Error)) return "falha de rede";
+  const causa = erro.cause;
+  if (causa instanceof AggregateError) {
+    const textos = causa.errors.map((item) => (item instanceof Error ? item.message : String(item))).filter(Boolean);
+    return textos.length ? `${erro.message}: ${textos.join("; ")}` : erro.message;
+  }
+  if (causa instanceof Error) {
+    const codigo = "code" in causa && typeof causa.code === "string" ? causa.code : "";
+    const texto = codigo && !causa.message.includes(codigo) ? `${codigo} ${causa.message}` : causa.message;
+    return texto ? `${erro.message}: ${texto}` : erro.message;
+  }
+  return erro.message;
+}
+
 /**
  * Busca no Gestão. Devolve `null` só quando a API diz que não existe (404).
- * Se o Gestão cair ou demorar, usa a última cópia boa; sem cópia, lança GestaoIndisponivel
- * e o Next continua servindo a última versão da página já gerada.
+ * Se o Gestão cair ou demorar, usa a última cópia boa. Sem cópia, no ar o Next
+ * mantém a página já gerada; no build não existe essa página, então a falha não
+ * pode derrubar o deploy.
  */
 export async function buscar<T>(caminho: string, { tags, semCache = false }: Opcoes): Promise<T | null> {
   const timeout = Number(process.env.GESTAO_API_TIMEOUT_MS ?? 4000);
@@ -78,7 +99,7 @@ export async function buscar<T>(caminho: string, { tags, semCache = false }: Opc
       ...(semCache ? { cache: "no-store" as const } : { next: { revalidate: REVALIDAR_SEGUNDOS, tags: [...tags, "site"] } }),
     });
   } catch (erro) {
-    return reserva<T>(caminho, erro instanceof Error ? erro.message : "falha de rede", semCache);
+    return reserva<T>(caminho, detalheDaFalha(erro), semCache);
   }
   if (resposta.status === 404) return null;
   if (!resposta.ok) return reserva<T>(caminho, `HTTP ${resposta.status}`, semCache);
@@ -93,7 +114,25 @@ async function reserva<T>(caminho: string, motivo: string, semCache: boolean): P
     console.warn(`[site-api] ${caminho}: ${motivo}; usando a última cópia.`);
     return copia;
   }
+  // Fora da coleta de rotas, connection() faz o Next marcar a página como dinâmica
+  // (revalidate 0) em vez de abortar o build. No pedido ela é renderizada de novo.
+  if (process.env.NEXT_PHASE === "phase-production-build" && !coletaDeRotas.getStore()) {
+    const { connection } = await import("next/server");
+    await connection();
+  }
   throw new GestaoIndisponivel(caminho, motivo);
+}
+
+export async function parametrosEstaticos<T>(carregar: () => Promise<T[]>): Promise<T[]> {
+  try {
+    return await coletaDeRotas.run(true, carregar);
+  } catch (erro) {
+    if (erro instanceof GestaoIndisponivel) {
+      console.warn(`[site-api] ${erro.message}. O build segue sem estas rotas; elas nascem no primeiro acesso.`);
+      return [];
+    }
+    throw erro;
+  }
 }
 
 async function obrigatorio<T>(caminho: string, tags: string[]): Promise<T> {

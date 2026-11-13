@@ -9,14 +9,14 @@ import { Icone } from "@/components/ui/Icone";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { aplicativo } from "@/lib/jsonld";
 import { metadados } from "@/lib/seo";
-import { siteApi } from "@/lib/site-api";
+import { parametrosEstaticos, siteApi } from "@/lib/site-api";
 
 export const revalidate = 3600;
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  return (await siteApi.produtos()).map((p) => ({ slug: p.slug }));
+export function generateStaticParams() {
+  return parametrosEstaticos(async () => (await siteApi.produtos()).map((p) => ({ slug: p.slug })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { PaginaConteudo } from "@/components/paginas/PaginaConteudo";
 import { metadados } from "@/lib/seo";
-import { siteApi } from "@/lib/site-api";
+import { parametrosEstaticos, siteApi } from "@/lib/site-api";
 
 export const revalidate = 3600;
 
@@ -15,9 +15,11 @@ async function paginaLivre(slug: string) {
   return pagina?.tipo === "livre" ? pagina : null;
 }
 
-export async function generateStaticParams() {
-  const paginas = await siteApi.paginas();
-  return paginas.filter((p) => p.tipo === "livre").map((p) => ({ slug: p.slug }));
+export function generateStaticParams() {
+  return parametrosEstaticos(async () => {
+    const paginas = await siteApi.paginas();
+    return paginas.filter((p) => p.tipo === "livre").map((p) => ({ slug: p.slug }));
+  });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -5,16 +5,18 @@ import { Artigo } from "@/components/blog/Artigo";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { artigo } from "@/lib/jsonld";
 import { metadados } from "@/lib/seo";
-import { siteApi } from "@/lib/site-api";
+import { parametrosEstaticos, siteApi } from "@/lib/site-api";
 
 export const revalidate = 3600;
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  const primeira = await siteApi.posts();
-  const demais = await Promise.all(Array.from({ length: primeira.paginas - 1 }, (_, i) => siteApi.posts({ pagina: i + 2 })));
-  return [primeira, ...demais].flatMap((lista) => lista.resultados.map((post) => ({ slug: post.slug })));
+export function generateStaticParams() {
+  return parametrosEstaticos(async () => {
+    const primeira = await siteApi.posts();
+    const demais = await Promise.all(Array.from({ length: primeira.paginas - 1 }, (_, i) => siteApi.posts({ pagina: i + 2 })));
+    return [primeira, ...demais].flatMap((lista) => lista.resultados.map((post) => ({ slug: post.slug })));
+  });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

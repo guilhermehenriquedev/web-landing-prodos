@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ListaBlog } from "@/components/blog/ListaBlog";
 import { metadados } from "@/lib/seo";
-import { siteApi } from "@/lib/site-api";
+import { parametrosEstaticos, siteApi } from "@/lib/site-api";
 
 export const revalidate = 3600;
 
@@ -13,8 +13,8 @@ async function categoria(slug: string) {
   return (await siteApi.categorias()).find((c) => c.slug === slug && c.total_posts > 0) ?? null;
 }
 
-export async function generateStaticParams() {
-  return (await siteApi.categorias()).filter((c) => c.total_posts > 0).map((c) => ({ slug: c.slug }));
+export function generateStaticParams() {
+  return parametrosEstaticos(async () => (await siteApi.categorias()).filter((c) => c.total_posts > 0).map((c) => ({ slug: c.slug })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -3,15 +3,17 @@ import { notFound, permanentRedirect } from "next/navigation";
 
 import { ListaBlog } from "@/components/blog/ListaBlog";
 import { metadados } from "@/lib/seo";
-import { siteApi } from "@/lib/site-api";
+import { parametrosEstaticos, siteApi } from "@/lib/site-api";
 
 export const revalidate = 3600;
 
 type Props = { params: Promise<{ numero: string }> };
 
-export async function generateStaticParams() {
-  const { paginas } = await siteApi.posts();
-  return Array.from({ length: Math.max(0, paginas - 1) }, (_, i) => ({ numero: String(i + 2) }));
+export function generateStaticParams() {
+  return parametrosEstaticos(async () => {
+    const { paginas } = await siteApi.posts();
+    return Array.from({ length: Math.max(0, paginas - 1) }, (_, i) => ({ numero: String(i + 2) }));
+  });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
