@@ -113,10 +113,10 @@ button {
   }
 }
 
+/* Só deslocamento: o conteúdo fica sempre visível, até para quem renderiza sem rolar (robôs, impressão). */
 @keyframes surgir {
   from {
-    opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(20px);
   }
 }
 
