@@ -29,3 +29,5 @@ L1 e L2 não dependem do Gestão e já colocam o site melhor no ar. G9 deve esta
 - As "seções de conteúdo claras" da L1 precisam de tokens claros novos; use os do tema claro do Gestão (`#EEF2F9`, `#FFFFFF`, `#0F172A`, `#475569`, links `#1D6AD8`).
 - O projeto não tem ESLint configurado (`npm run lint` abre o assistente do Next). Configurar o lint fica para a L1.
 - Capturas e relatório em `docs/execucao/identidade-nova/`.
+
+- S1-site-com-blog-e-cms-no-gestao.md — substitui L1, G9, L3 e o conteúdo da L4: site com produtos, blog e SEO, conteúdo cadastrado no Gestão (sistema "Landing page Pródos"). Ordem: V1 → S1 → L2.
