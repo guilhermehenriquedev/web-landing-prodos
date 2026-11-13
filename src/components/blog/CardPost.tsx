@@ -9,7 +9,7 @@ import estilos from "./blog.module.scss";
 export function CardPost({ post, nivel = 3, prioridade = false }: { post: ResumoPost; nivel?: 2 | 3; prioridade?: boolean }) {
   const Titulo = nivel === 2 ? "h2" : "h3";
   return (
-    <article className={estilos.card}>
+    <article className={`${estilos.card} surgir`}>
       {post.capa ? (
         <div className={estilos.capa}>
           <Imagem imagem={post.capa} sizes="(min-width: 1200px) 380px, (min-width: 600px) 50vw, 100vw" prioridade={prioridade} />

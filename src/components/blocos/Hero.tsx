@@ -11,7 +11,7 @@ export function Hero({ dados, principal, trilha }: Props) {
   return (
     <section className={estilos.hero}>
       <div className={`${estilos.heroInterno} ${dados.imagem ? estilos.heroComImagem : ""}`}>
-        <div className={`${estilos.heroTexto} surgir`}>
+        <div className={estilos.heroTexto}>
           {trilha}
           {dados.selo ? <p className={estilos.selo}>{dados.selo}</p> : null}
           <Titulo className={estilos.heroTitulo}>{dados.titulo}</Titulo>

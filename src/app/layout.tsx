@@ -12,9 +12,9 @@ import { siteApi } from "@/lib/site-api";
 
 import "@/styles/globals.scss";
 
+// Fonte variável: um arquivo cobre do 400 ao 800. O subconjunto latin já tem os acentos do português.
 const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
   display: "swap",
   variable: "--fonte-jakarta",
 });

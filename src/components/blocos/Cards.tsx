@@ -38,7 +38,7 @@ export function Cards({ dados }: { dados: DadosCards }) {
               </>
             );
             return (
-              <li key={card.titulo} className={estilos.card}>
+              <li key={card.titulo} className={`${estilos.card} surgir`}>
                 {card.link ? (
                   <Link href={card.link} className={estilos.cardLink}>
                     {conteudo}
