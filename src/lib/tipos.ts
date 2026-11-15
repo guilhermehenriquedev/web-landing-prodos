@@ -117,6 +117,20 @@ export type Produto = ResumoProduto & {
   publicado_em: string | null;
 };
 
+export type Vaga = {
+  slug: string;
+  titulo: string;
+  area: string;
+  modalidade: "presencial" | "hibrida" | "remota";
+  modalidade_rotulo: string;
+  local: string;
+  contratacao: string;
+  resumo: string;
+  descricao: string;
+  requisitos: string;
+  publicada_em: string;
+};
+
 export type ItemSitemap = { tipo: string; url: string; atualizado_em: string | null };
 export type Redirecionamento = { origem: string; destino: string };
 

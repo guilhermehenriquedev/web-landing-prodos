@@ -171,10 +171,10 @@
 .cabecalhoInterno {
   @include container;
   max-width: 880px;
-  padding-block: 32px 120px;
+  padding-block: 32px 40px;
 
   @include a-partir($md) {
-    padding-block: 48px 160px;
+    padding-block: 48px 56px;
   }
 
   h1 {
@@ -220,23 +220,6 @@
 .corpoArtigo {
   @include container;
   max-width: 1148px;
-  margin-top: -96px;
-
-  @include a-partir($md) {
-    margin-top: -128px;
-  }
-}
-
-.capaArtigo {
-  border-radius: $raio-card;
-  overflow: hidden;
-  border: 1px solid $glass-border;
-  box-shadow: 0 24px 60px rgba(6, 10, 19, 0.25);
-
-  img {
-    width: 100%;
-    height: auto;
-  }
 }
 
 .colunas {

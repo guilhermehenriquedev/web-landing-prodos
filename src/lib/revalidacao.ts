@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 
 export const TOLERANCIA_SEGUNDOS = 300;
-const TAG_VALIDA = /^(site|config|menu|paginas|posts|produtos|categorias|redirecionamentos|sitemap|(pagina|post|produto):[a-z0-9][a-z0-9-]{0,140})$/;
+const TAG_VALIDA = /^(site|config|menu|paginas|posts|produtos|categorias|redirecionamentos|sitemap|vagas|(pagina|post|produto):[a-z0-9][a-z0-9-]{0,140})$/;
 
 export type Aviso = { id: string; tipo: string; slug: string | null; tags: string[] };
 

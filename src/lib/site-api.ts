@@ -17,6 +17,7 @@ import type {
   ResumoPagina,
   ResumoProduto,
   Tag,
+  Vaga,
 } from "./tipos";
 
 /** Uma hora de vida no cache; o aviso do Gestão invalida antes, na hora em que algo muda. */
@@ -160,6 +161,7 @@ export const siteApi = {
   produtos: () => obrigatorio<ResumoProduto[]>("/produtos/", ["produtos"]),
   produto: (slug: string) => buscar<Produto>(`/produtos/${seguro(slug)}/`, { tags: [`produto:${slug}`, "produtos"] }),
   redirecionamentos: () => obrigatorio<Redirecionamento[]>("/redirecionamentos/", ["redirecionamentos"]),
+  vagas: () => obrigatorio<Vaga[]>("/vagas/", ["vagas"]),
   sitemap: () => obrigatorio<ItemSitemap[]>("/sitemap/", ["sitemap"]),
   previa: (token: string) => buscar<Previa>(`/previa/${seguro(token)}/`, { tags: [], semCache: true }),
 };

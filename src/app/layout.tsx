@@ -46,7 +46,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const ga4 = config.scripts.ga4_id;
   return (
     <html lang="pt-BR" className={jakarta.variable}>
-      <body>
+      {/* Extensões do navegador (ColorZilla, Grammarly...) injetam atributos no body antes da hidratação. */}
+      <body suppressHydrationWarning>
         <a href="#conteudo" className="pular-para-conteudo">
           Pular para o conteúdo
         </a>

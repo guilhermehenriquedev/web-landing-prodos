@@ -13,7 +13,7 @@ Uma cópia deste arquivo fica em `gestao-prodos/docs/contrato-site-api.md`; ao m
 - Sai `avaliacoes-google/` (fica para a L4/G10) e o bloco `avaliacoes_google`; `grade_cards` passa a se chamar `cards`; sai `botoes` como bloco solto.
 
 ## Regras gerais
-- Somente leitura, exceto `leads/`. Sem autenticação. Limite por IP: `SITE_API_THROTTLE_RATE` (padrão 600/min) e `SITE_LEADS_THROTTLE_RATE` (padrão 5/hora). Acima disso, 429.
+- Somente leitura, exceto `leads/` e `candidaturas/`. Sem autenticação. Limite por IP: `SITE_API_THROTTLE_RATE` (padrão 600/min) e `SITE_LEADS_THROTTLE_RATE` (padrão 5/hora, contado à parte para leads e candidaturas). Acima disso, 429.
 - Só sai conteúdo com `status = publicado` e `publicar_em` já vencida. Rascunho e agendado nunca. Produto só com `visivel = true`. Item de menu só se o destino estiver no ar; "grupo" sem submenu no ar e "blog"/categoria sem post no ar também não saem.
 - JSON, campos em português, datas ISO 8601.
 - Cabeçalhos: `ETag` (responde 304 com `If-None-Match`) e `Cache-Control: public, max-age=60, stale-while-revalidate=300`. Mídia: `Cache-Control: public, max-age=31536000, immutable`.
@@ -25,7 +25,7 @@ Uma cópia deste arquivo fica em `gestao-prodos/docs/contrato-site-api.md`; ao m
 | Rota | Resposta |
 |---|---|
 | `config/` | `{nome, descricao_curta, logo, logo_clara, razao_social, cnpj, contato:{whatsapp, telefone, email, horario, endereco, area_atendida}, redes:[{rede,url}], rodape:{texto, colunas:[{titulo, links:[{rotulo,url}]}]}, seo_padrao:{titulo, descricao, imagem_og}, scripts:{ga4_id, verificacao_search_console}}`. `endereco` é `null` sem cidade e UF; com elas, `{logradouro, numero, complemento, bairro, cidade, uf, cep}` (os outros podem ser `null`). |
-| `menu/` | `[{id, rotulo, tipo, url, nova_aba, destaque, filhos:[mesma forma, sem filhos]}]` (2 níveis). `url` é `null` em "grupo". |
+| `menu/` | `[{id, rotulo, tipo, url, nova_aba, destaque, filhos:[mesma forma, sem filhos]}]` (2 níveis). `url` é `null` em "grupo"; o tipo "vagas" aponta para `/trabalhe-conosco`. |
 | `paginas/` | `[{slug, tipo, url, titulo, atualizado_em}]` (sem as páginas-artigo de produto). |
 | `paginas/{slug}/` | item acima + `{resumo, seo, blocos, produto_relacionado: ResumoProduto|null, publicado_em}` |
 | `posts/?categoria=&tag=&produto=&pagina=` | `{total, pagina, paginas, proxima, resultados:[ResumoPost]}`, 12 por página. |
@@ -35,6 +35,7 @@ Uma cópia deste arquivo fica em `gestao-prodos/docs/contrato-site-api.md`; ao m
 | `produtos/` | `[ResumoProduto]` |
 | `produtos/{slug}/` | ResumoProduto + `{titulo, seo, blocos (do artigo), posts_relacionados:[ResumoPost], servicos_relacionados:[{slug,tipo,url,titulo,atualizado_em}], publicado_em}` |
 | `redirecionamentos/` | `[{origem, destino}]` (só os ativos; origem é caminho, destino é caminho ou `https://`) |
+| `vagas/` | `[{slug, titulo, area, modalidade: presencial|hibrida|remota, modalidade_rotulo, local, contratacao, resumo, descricao, requisitos, publicada_em}]`, só as abertas. `descricao` e `requisitos` são texto puro com quebras de linha. |
 | `sitemap/` | `[{tipo, url, atualizado_em|null}]` de tudo que é indexável (sem `noindex`) |
 | `midia/{id}/{largura}.webp` | Imagem WebP. Só serve variantes gravadas em `Midia` do `site_cms`; a chave do storage vem do banco, nunca da URL. |
 | `previa/{token}/` | `{alvo:"pagina", pagina}` ou `{alvo:"post", post}` ou `{alvo:"produto", produto}`, inclusive rascunho. Token assinado, vale 1 hora. `Cache-Control: no-store`, `X-Robots-Tag: noindex, nofollow`. |
@@ -50,16 +51,22 @@ Corpo: `{nome, email, telefone?, empresa?, mensagem, origem, consentimento_lgpd:
 - `consentimento_lgpd` falso, e-mail ou telefone inválidos: 400 com a mensagem do campo.
 - Texto sem tags. O IP do visitante vai em `X-Forwarded-For` (a landing repassa por `/api/contato`).
 
+## Candidaturas (POST `candidaturas/`, multipart)
+Campos: `vaga?` (slug de vaga aberta; vazio = banco de talentos), `nome`, `email`, `telefone`, `cidade?`, `linkedin?` (URL http/https), `mensagem?`, `curriculo` (arquivo), `consentimento_lgpd: true`, `hp: ""` → `201 {"ok": true}`.
+- Currículo em PDF, DOC ou DOCX, até 5 MB. O conteúdo é conferido pelos primeiros bytes, não só pela extensão. Fica no bucket privado (`MINIO_BUCKET`), em `site/curriculos/{uuid}.{ext}`, e só sai pelo admin, num link assinado de 5 minutos.
+- Vaga fechada ou inexistente, arquivo inválido, consentimento falso: 400 com a mensagem do campo. `hp` preenchido: 201 e descarta.
+- A landing repassa por `/api/candidatura` e barra corpo acima de 6 MB (413).
+
 ## Aviso de atualização (Gestão → Landing)
 - `POST {LANDING_REVALIDAR_URL}` (na landing, `/api/revalidar`) com:
   - `X-Prodos-Timestamp`: segundos Unix;
   - `X-Prodos-Assinatura`: `v1=` + HMAC-SHA256 hex de `"{timestamp}.{corpo}"` com `LANDING_REVALIDAR_SEGREDO` (= `GESTAO_REVALIDAR_SEGREDO` na landing);
   - `X-Prodos-Id`: id do aviso (idempotência; a landing responde 200 a repetições sem refazer nada).
-- Corpo: `{"id", "tipo": "config|menu|pagina|post|produto|categorias|redirecionamentos|midia", "slug", "tags": [...], "ocorrido_em"}`.
-- Tags válidas: `site`, `config`, `menu`, `paginas`, `posts`, `produtos`, `categorias`, `redirecionamentos`, `sitemap`, `pagina:{slug}`, `post:{slug}`, `produto:{slug}`. A landing ignora as que não casam. Ao trocar o slug, vão o antigo e o novo.
+- Corpo: `{"id", "tipo": "config|menu|pagina|post|produto|categorias|redirecionamentos|midia|vagas", "slug", "tags": [...], "ocorrido_em"}`.
+- Tags válidas: `site`, `config`, `menu`, `paginas`, `posts`, `produtos`, `categorias`, `redirecionamentos`, `sitemap`, `vagas`, `pagina:{slug}`, `post:{slug}`, `produto:{slug}`. A landing ignora as que não casam. Ao trocar o slug, vão o antigo e o novo.
 - A landing recusa assinatura errada ou timestamp a mais de 300 s (401) e sem segredo configurado responde 503.
 - Entrega: o aviso nasce na mesma transação da mudança e vai para o worker assim que ela confirma (alguns segundos no ar). A tarefa `site-repescar-avisos` (a cada 60 s) refaz só os que falharam, com espera crescente de 30 s até 1 h, e desiste em 24 h (registro em Logs).
-- Dispara ao publicar, editar, despublicar, agendar (na hora da publicação), excluir, mexer no menu, configuração, categorias/tags, redirecionamentos ou no alt de uma imagem. Rascunho que nunca esteve no ar não dispara.
+- Dispara ao publicar, editar, despublicar, agendar (na hora da publicação), excluir, mexer no menu, configuração, categorias/tags, redirecionamentos, vagas ou no alt de uma imagem. Rascunho que nunca esteve no ar não dispara.
 
 ## Tipos de bloco (`{id, tipo, dados}`)
 | tipo | dados |

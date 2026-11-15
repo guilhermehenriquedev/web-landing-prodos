@@ -1,5 +1,5 @@
 import { absoluta, urlDoSite } from "./seo";
-import type { Bloco, Config, Post, Produto } from "./tipos";
+import type { Bloco, Config, Post, Produto, Vaga } from "./tipos";
 import { textoPuro } from "./html";
 
 type Objeto = Record<string, unknown>;
@@ -109,5 +109,24 @@ export function perguntas(blocos: Bloco[]): Objeto | null {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: itens.map((item) => ({ "@type": "Question", name: item.pergunta, acceptedAnswer: { "@type": "Answer", text: textoPuro(item.resposta_html) } })),
+  };
+}
+
+export function vaga(item: Vaga, config: Config): Objeto {
+  // "Teresina (PI)" vira cidade e UF; outro formato vai inteiro como cidade.
+  const [, cidade = item.local, uf] = item.local.match(/^(.+?)\s*\(([A-Z]{2})\)$/) ?? [];
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: item.titulo,
+    description: [item.descricao, item.requisitos].filter(Boolean).join("\n\n"),
+    datePosted: item.publicada_em,
+    hiringOrganization: { "@type": "Organization", "@id": ID_ORGANIZACAO(), name: config.nome, sameAs: urlDoSite() },
+    jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: cidade, addressRegion: uf, addressCountry: "BR" } },
+    ...(item.modalidade === "remota"
+      ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "Brasil" } }
+      : {}),
+    directApply: true,
+    url: absoluta(`/trabalhe-conosco#vaga-${item.slug}`),
   };
 }

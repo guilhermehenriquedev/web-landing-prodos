@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Imagem } from "@/components/ui/Imagem";
 import { Prosa } from "@/components/ui/Prosa";
 import { Trilha } from "@/components/ui/Trilha";
 import { dividirNoMeio, prepararArtigo } from "@/lib/html";
@@ -41,11 +40,6 @@ export function Artigo({ post }: { post: Post }) {
       </header>
 
       <div className={estilos.corpoArtigo}>
-        {post.capa ? (
-          <div className={estilos.capaArtigo}>
-            <Imagem imagem={post.capa} sizes="(min-width: 1200px) 1100px, 100vw" prioridade />
-          </div>
-        ) : null}
         <div className={estilos.colunas}>
           <div className={estilos.textoArtigo}>
             <SumarioMovel itens={sumario} />
