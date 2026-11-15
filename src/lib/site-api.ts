@@ -161,7 +161,8 @@ export const siteApi = {
   produtos: () => obrigatorio<ResumoProduto[]>("/produtos/", ["produtos"]),
   produto: (slug: string) => buscar<Produto>(`/produtos/${seguro(slug)}/`, { tags: [`produto:${slug}`, "produtos"] }),
   redirecionamentos: () => obrigatorio<Redirecionamento[]>("/redirecionamentos/", ["redirecionamentos"]),
-  vagas: () => obrigatorio<Vaga[]>("/vagas/", ["vagas"]),
+  // Sem vaga a página segue com o banco de talentos; um 404 (Gestão sem a rota ainda) não derruba o build.
+  vagas: async () => (await buscar<Vaga[]>("/vagas/", { tags: ["vagas"] })) ?? [],
   sitemap: () => obrigatorio<ItemSitemap[]>("/sitemap/", ["sitemap"]),
   previa: (token: string) => buscar<Previa>(`/previa/${seguro(token)}/`, { tags: [], semCache: true }),
 };
